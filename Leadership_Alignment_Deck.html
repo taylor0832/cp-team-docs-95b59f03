@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CoverPanda · leadership alignment · v2 working draft</title>
+<style>
+  :root{--canvas:#fbfaf8;--ink:#1a1613;--muted:#6b645c;--hairline:#e8e4de;--ember:#ff3e00;--moss:#5c7a5c}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--canvas);color:var(--ink);font-family:'Instrument Sans','Helvetica Neue',Arial,sans-serif;line-height:1.5}
+  .serif{font-family:'Fraunces',Georgia,'Times New Roman',serif;font-weight:500}
+  .wrap{max-width:1000px;margin:0 auto;padding:44px 32px 90px}
+  section{padding:42px 0;border-bottom:1px solid var(--hairline)}
+  section:last-child{border-bottom:none}
+  .kicker{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+  .kicker::before{content:"";display:inline-block;width:26px;height:1px;background:var(--ember);vertical-align:middle;margin-right:10px}
+  .movement{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ember);margin-bottom:6px}
+  h1{font-size:40px;line-height:1.12;margin-bottom:14px}
+  h2{font-size:25px;line-height:1.18;margin-bottom:10px}
+  h3.sub{font-family:'Fraunces',Georgia,serif;font-weight:500;font-size:18px;margin:24px 0 8px}
+  p.lead{font-size:15.5px;max-width:78ch}
+  p.note{font-size:13px;color:var(--muted);max-width:80ch;margin-top:12px}
+  .ember{color:var(--ember)}
+  table{width:100%;border-collapse:collapse;margin-top:15px;font-size:13.5px}
+  th{text-align:left;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600;padding:0 12px 8px 0;border-bottom:1px solid var(--ink)}
+  td{padding:10px 12px 10px 0;border-bottom:1px solid var(--hairline);vertical-align:top}
+  td.n{font-family:'Fraunces',Georgia,serif;font-weight:500;font-size:14px;white-space:nowrap}
+  .duo{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:18px}
+  .card{border:1px solid var(--hairline);border-radius:10px;padding:19px;background:#fff9}
+  .card .lab{font-size:11px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
+  .card.good .lab{color:var(--moss)}
+  .card.hard .lab{color:var(--ember)}
+  .card p,.card li{font-size:13.5px}
+  .card ul{margin-left:16px}
+  .card li{margin-bottom:6px}
+  .quote{font-size:20px;line-height:1.45;font-style:italic;max-width:66ch;margin:20px 0;padding-left:18px;border-left:2px solid var(--ember)}
+  .role{border:1px solid var(--hairline);border-radius:10px;padding:17px 19px;margin-top:12px;background:#fff9}
+  .role .hd{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px}
+  .role .hd h3{font-family:'Fraunces',Georgia,serif;font-weight:500;font-size:17px}
+  .role .hd .metric{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ember)}
+  .role p{font-size:13px;max-width:82ch}
+  .role .owns{color:var(--ink)}
+  .role .not{color:var(--muted);margin-top:4px}
+  .org{margin-top:20px}
+  .box{border:1px solid var(--ink);border-radius:9px;padding:13px 18px;background:#fff}
+  .box .t{font-family:'Fraunces',Georgia,serif;font-weight:500;font-size:15.5px}
+  .box .s{font-size:12px;color:var(--muted);margin-top:2px}
+  .down{text-align:center;color:var(--ember);font-size:18px;margin:7px 0}
+  .arms{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+  .arm{border:1px dashed var(--hairline);border-radius:9px;padding:12px;text-align:center;background:#fff9}
+  .arm .n2{font-family:'Fraunces',Georgia,serif;font-weight:500;font-size:13.5px}
+  .arm .p{font-size:11px;color:var(--muted);margin-top:4px}
+  .arm.live{border-style:solid;border-color:var(--moss)}
+  .stops{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin-top:22px}
+  .stop{text-align:center}
+  .dot{width:11px;height:11px;border-radius:50%;background:var(--canvas);border:2px solid var(--hairline);margin:0 auto 9px}
+  .dot.on{border-color:var(--ember);background:var(--ember)}
+  .dot.gate{border-color:var(--ink)}
+  .stop .amt{font-family:'Fraunces',Georgia,serif;font-weight:500;font-size:15px}
+  .stop .lbl{font-size:10.5px;color:var(--muted);margin-top:4px;line-height:1.35}
+  .track{height:2px;background:var(--hairline);margin:0 6px;position:relative}
+  .track .done{position:absolute;left:0;top:0;height:2px;width:14%;background:var(--ember)}
+  ol.commit{margin:16px 0 0 20px}
+  ol.commit li{font-size:14.5px;margin-bottom:10px;max-width:82ch}
+  footer{padding-top:30px;font-size:12px;color:var(--muted)}
+  @media print{section{page-break-inside:avoid}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- COVER -->
+<section>
+  <div class="kicker">v2 working draft · to workshop · confidential</div>
+  <h1 class="serif">One company, four lanes,<br>one number.</h1>
+  <p class="lead">Our first real sit-down as a leadership team with everything on one table: the moat we're going after, who owns what, how each of us gets paid for growth, who we sell to, how we grow, and what this looks like in five years if we refuse to play it safe. Nothing here is new. It's everything we've worked through, assembled so we align once, sign once, and go.</p>
+</section>
+
+<!-- 1 THE MOMENT -->
+<section>
+  <div class="movement">Part I · The moment and the moat</div>
+  <div class="kicker">1 · The market just proved both halves of our thesis</div>
+  <h2 class="serif">One company proved the vertical. One proved the engine. Nobody holds the intersection.</h2>
+  <table>
+    <tr><th style="width:170px">This month</th><th>What they proved</th><th>What they don't hold</th></tr>
+    <tr><td class="n">Delightree<br><span style="font-family:inherit;font-weight:400;font-size:11.5px;color:var(--muted)">$25M · Accel, Innovius</span></td><td>Franchise brands buy an "operating system" at scale: 6,000+ locations, ~20x revenue in two years. The vertical is venture-scale, priced by top-tier capital.</td><td>The money and the regulated work. No books, no royalties, no payments, no FDD workflow. Their "compliance" is checklists and brand standards.</td></tr>
+    <tr><td class="n">Haven<br><span style="font-family:inherit;font-weight:400;font-size:11.5px;color:var(--muted)">$10M → $15M ARR</span></td><td>The AI-native accounting firm works: bookkeeping to taxes to managed AP/AR to multi-entity, scaled to $15M in about the time we've been building. The engine, proven in public.</td><td>A vertical. No brand relationships, no franchise graph, no batch distribution. They win one customer at a time.</td></tr>
+  </table>
+  <div class="quote">Delightree is operations for franchising. Haven is an AI-native accounting firm for everyone. We are both ideas pointed at one niche: the financial and compliance operating system for franchise systems. That intersection is empty, and it is the most valuable seat in the category.</div>
+
+  <h3 class="sub">The two-sided read, honest on both sides</h3>
+  <div class="duo">
+    <div class="card good">
+      <div class="lab">The good side</div>
+      <ul>
+        <li>Accel just priced our category. Every investor conversation starts from a live comp instead of an education session.</li>
+        <li>$25M of Delightree marketing will teach every franchisor to want an operating system. We sell the half they can't deliver.</li>
+        <li>solidcore and Beem Light Sauna are Delightree customers <b>and named deals in our pipeline</b>. Brands that buy franchise software are qualified, not contested.</li>
+        <li><b>Haven is our proof and our playbook, not our threat:</b> they validated every rung of the services ladder we're climbing, with numbers. Franchising is the niche version of their story, and the niche is where the moat is. We win both sides of that coin.</li>
+      </ul>
+    </div>
+    <div class="card hard">
+      <div class="lab">The honest side</div>
+      <ul>
+        <li>They raised on ~20x growth and 6,000 locations. Our traction gets read against theirs. Collected ARR and activation velocity are what make our numbers credible.</li>
+        <li>Capital can buy adjacency: Delightree can partner toward finance, and any horizontal accounting player could pick our vertical someday. The moat is not that crossing is impossible. It's that we started at the intersection and move faster.</li>
+        <li><b>The window to own the franchise money-and-compliance layer is roughly 12 to 24 months.</b> That clock sits behind every number in this deck.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 2 THE MOAT -->
+<section>
+  <div class="kicker">2 · The moat we're setting out to win</div>
+  <h2 class="serif">Ops companies own the checklist. We own the FDD.</h2>
+  <p class="lead">This is the distinction to burn in. Delightree and every ops platform live in the daily checklist: training, audits, tasks. Useful, replaceable, and never touching a regulated document. <b>We are operations too, but our operations are the compliance and money workflows a franchise cannot legally skip:</b> the books beneath every unit, royalties computed on real revenue, and, at the top of the ladder, <b>the FDD and its annual renewal.</b> Every franchisor must produce that document, every year, assembled from audited financials, Item 19 financial performance data, and a hand-coordinated network of attorneys and CPAs. It is the control point of the entire franchise system.</p>
+  <table>
+    <tr><th style="width:210px">The compliance ladder</th><th>What we do: today → the build</th></tr>
+    <tr><td class="n">The books</td><td>Connected, closed, consolidated across every unit. Live today. The raw material for everything above it.</td></tr>
+    <tr><td class="n">Royalties</td><td>Computed on real POS revenue, collected on our rails, true-ups instead of self-reporting. The wedge, live with first brands.</td></tr>
+    <tr><td class="n">The reporting layer</td><td>Brand scorecards, benchmarks, board reports, Item 19-ready financial performance data. Live and expanding.</td></tr>
+    <tr><td class="n ember">The FDD and renewal</td><td><b>The prize.</b> Automate and own the annual FDD renewal workflow: the audited financials that feed it, the Item 19 built from live books, the coordination of the attorneys and CPAs who assemble it by hand today. Own that workflow and we are structurally unremovable.</td></tr>
+    <tr><td class="n">The rails: royalty AR/AP</td><td>We are building the bill.com / Ramp layer for franchising: invoicing, collection, and payout automation for royalties and brand fees, integrated where brands already run. ★ = platforms our existing brands are on today.<br><span style="font-size:12.5px;color:var(--muted)">Health &amp; wellness: Mindbody ★ · QSR: Square ★ · Crisp ★ · Toast · Catch-all: Stripe ★ · Home services: Bill.com ★ · Ramp</span></td></tr>
+    <tr><td class="n">The professionals</td><td>Attorneys, CPAs, and accountants become participants on our rails, not competitors. The attorney channel is already live via Akerman. They are both the distribution and the delivery of the compliance layer.</td></tr>
+  </table>
+  <div class="quote">YC's own Request for Startups asks for exactly this shape: AI-native services companies that own the outcome, not the tool. Ours is: we make franchise systems exit-ready and keep them exit-ready. Every brand is heading toward a sale, a raise, or a succession, and every one of those events runs on the financial and compliance record we hold.</div>
+  <p class="note">Claim discipline: externally we market what's live (books, royalties, consolidated reporting). FDD and tax workflows get claimed as we staff and ship them. Internally, this ladder is the map, and every roadmap item earns its place by moving up it.</p>
+</section>
+
+<!-- 3 WHY THE PACE -->
+<section>
+  <div class="kicker">3 · Why we grow at this pace</div>
+  <h2 class="serif">Small outcomes split four ways pay nobody. The window pays fast movers.</h2>
+  <p class="lead"><b>The two costs of slow, with no fog.</b> A services-heavy company creeping toward $4M trades at 4 to 6 times revenue, and on our pre-July pace we would not even reach that inside five years. Small multiple <b>and</b> a long wait: that is the entire downside case, and every person at this table has better options than a decade of grind for a modest outcome. This is everyone's main thing, and the plan has to be worthy of that.</p>
+  <table>
+    <tr><th style="width:190px"></th><th>The slow path</th><th class="ember">The platform path</th></tr>
+    <tr><td class="n">Multiple</td><td>4–6× revenue (services-heavy, labor-margin)</td><td class="ember">12–18× revenue, earned at ~65% blended gross margin with product at half the mix</td></tr>
+    <tr><td class="n">Time horizon</td><td>5+ years to a modest number</td><td class="ember">The same calendar, pointed at gates that start paying at $2.0M this December</td></tr>
+    <tr><td class="n">What it demands</td><td>Nothing changes</td><td class="ember">Speed: batch activation, the margin path, and the window used while it is open</td></tr>
+  </table>
+  <p class="lead" style="margin-top:12px"><b>The market is saying the same thing out loud.</b> The category got funded this month. YC's request-for-startups list explicitly asks for AI-native services and vertical financial operating systems, and we applied as exactly that. Haven proved the engine reaches $15M in about three years. Delightree proved the vertical supports 20x in two. Those are not threats. They are the bar.</p>
+  <table>
+    <tr><th style="width:190px">Best-in-class bar</th><th>Their pace</th><th>What it means for us</th></tr>
+    <tr><td class="n">Haven</td><td>$0 → $15M ARR in ~3 years; expanded 3 services → 6</td><td>The services ladder compounds when you keep shipping lines. Accounting → payroll → AP/AR → compliance is the same shape.</td></tr>
+    <tr><td class="n">Delightree</td><td>~20x revenue in 2 years; 6,000+ locations</td><td>Franchise brands adopt at batch speed when the product lands. Unit activation is our version of their location count.</td></tr>
+    <tr><td class="n">Harmonyze</td><td>AI agents for franchise brand-standards and ops compliance</td><td>More proof the ops layer is crowded with builders and capital. The money-and-regulated layer is not. That contrast is our whole opening.</td></tr>
+    <tr><td class="n">Pilot (the ceiling)</td><td>$150M+ raised; services → platform → channel</td><td>The end-state shape we designed for on day one, in a vertical they never picked.</td></tr>
+  </table>
+  <p class="lead" style="margin-top:14px"><b>And our own history says it loudest.</b> The number one thing that has ever slowed this team is drift: shifting targets, unclear lanes, momentum bleeding into confusion about what we're building. That era ends with this document. We have the right people, real traction (+34.4% product growth in July, ~$800K collected and live-metered), and a market moving toward us. The pace is not a preference. It is the plan working or not working.</p>
+</section>
+
+<!-- 4 POSITION + ICP -->
+<section>
+  <div class="movement">Part II · What we sell, to whom, for how much</div>
+  <div class="kicker">4 · The position and the customer</div>
+  <h2 class="serif">The financial and compliance OS for franchise systems, sold to the person who owns the brand's money.</h2>
+  <p class="lead"><b>The sales sentence stays the sentence:</b> "We automate your royalties and give you the financial insights to coach your franchisees." Exit-ready is where the relationship goes; the sentence is where it starts.</p>
+  <table>
+    <tr><td class="n" style="width:210px">Who buys</td><td>The growth-stage franchisor's <b>CFO or finance lead</b>, not the CEO and not the bookkeeper</td></tr>
+    <tr><td class="n">The profile</td><td><b>25–50 units open (center ~40), 50–100 sold.</b> Sold-but-unopened units are the services runway: every opening needs books from day one, with us standing there as preferred vendor</td></tr>
+    <tr><td class="n">The filter</td><td>POS coverage IS targeting: Mindbody · Square · Crisp · Stripe · Toast</td></tr>
+  </table>
+
+  <h3 class="sub">What one growth-stage brand is worth, fully stacked</h3>
+  <table>
+    <tr><th style="width:280px">Line</th><th style="width:240px">Math</th><th>Year-one value</th></tr>
+    <tr><td class="n">Platform + 40 connected units</td><td>($249/mo × 12) + (40 × $46/mo × 12)</td><td>$25,068</td></tr>
+    <tr><td class="n">~12 new units opening per year</td><td>12 × $552/yr (that is the $46/mo per connected unit, annualized), roughly half realized in-year</td><td>+$3.3K in-year, running at +$6.6K/yr after</td></tr>
+    <tr><td class="n">CFO / billing attach (where sold)</td><td>~$950+/mo brand-level</td><td>+$11.4K</td></tr>
+    <tr><td class="n">Bookkeeping on new opens</td><td>12 opens × 50% convert × $5.4K*</td><td>+$32.4K services</td></tr>
+    <tr><td class="n ember">One ICP brand, all-in</td><td></td><td class="ember"><b>~$72K blended ARR</b> (~$40K product + ~$32K services), compounding as they open</td></tr>
+  </table>
+
+  <h3 class="sub">What a flagship is worth: Swig, worked forward</h3>
+  <table>
+    <tr><th style="width:280px">Line</th><th style="width:240px">Math</th><th>Value</th></tr>
+    <tr><td class="n">Platform on ~200 open units</td><td>$249/mo + 200 × $46/mo</td><td><b>~$113K ARR</b></td></tr>
+    <tr><td class="n">H2: ~50 committed units open their doors</td><td>50 × $552/yr (the $46/mo unit fee, annualized)</td><td>+$27.6K product</td></tr>
+    <tr><td class="n">Bookkeeping at a conservative 25% of those opens</td><td>50 × 25% × $5.4K*</td><td>+$67.5K services</td></tr>
+    <tr><td class="n ember">One flagship, year one</td><td></td><td class="ember"><b>~$200K+ blended</b>, before CFO attach and before the rest of the 500-unit horizon opens</td></tr>
+  </table>
+
+  <p class="note">*$5.4K = $450/mo bookkeeping × 12, bookkeeping only. Accounts that also attach payroll add ~$3,000/yr, so a payroll-attached account runs ~$8.4K and the blended average across a book is ~$5,850 at a 15% payroll attach rate.</p>
+  <h3 class="sub">Ten to get three: the flagship hunt list</h3>
+  <p class="lead">The flagship profile: <b>100+ units open, 200+ sold or committed, POS on our coverage list, real royalty pain at the finance seat.</b> We need three; a three-of-ten hit rate is realistic, so the list is ten:</p>
+  <table>
+    <tr><th style="width:160px">Candidate</th><th style="width:190px">Scale (approx.)</th><th>Why / status</th></tr>
+    <tr><td class="n">Swig</td><td>~200 open · 500-unit horizon</td><td><b>In motion.</b> Onboarding docs flowing; same-day turnaround on everything they send</td></tr>
+    <tr><td class="n ember">Crumbl</td><td>1,000+ units</td><td><b>Earned through relationships we already hold.</b> No CFO function, no scorecards, no benchmarks; franchisees loudly unhappy that tech fees rose ~20% while the tech keeps breaking. Discovery first, then a cost-savings offer</td></tr>
+    <tr><td class="n">Cupbop</td><td>~100 units</td><td>Named target; QSR on covered POS; right scale, right pain</td></tr>
+    <tr><td class="n">solidcore</td><td>100+ studios</td><td>Already in our pipeline ($48K deal) · a Delightree customer, so proven software buyer</td></tr>
+    <tr><td class="n">Beem Light Sauna</td><td>~75 open · ~150 sold</td><td>In pipeline ($60K) · Delightree customer · Mindbody vertical</td></tr>
+    <tr><td class="n">Perspire Sauna Studio</td><td>~80 open · ~200 licensed</td><td>Mindbody vertical; sold-unopened runway is the services story</td></tr>
+    <tr><td class="n">All Dry</td><td>growing fast, home services</td><td>Largest named deal in pipeline ($212K)</td></tr>
+    <tr><td class="n">Soccer Stars</td><td>multi-territory youth sports</td><td>Second-largest named deal ($200K)</td></tr>
+    <tr><td class="n">Bubbakoo's Burritos</td><td>100+ units</td><td>Named pipeline ($166K); QSR POS coverage</td></tr>
+    <tr><td class="n">Massage Heights</td><td>~100 units</td><td>Named pipeline; wellness vertical, Mindbody-adjacent</td></tr>
+  </table>
+</section>
+
+<!-- 5 HOW WE GROW -->
+<section>
+  <div class="kicker">5 · How we grow it, and how inbound is handled</div>
+  <h2 class="serif">Three lanes, one pipeline rule, crediting with zero gray areas.</h2>
+  <table>
+    <tr><th style="width:180px">Lane</th><th>What it is</th></tr>
+    <tr><td class="n">1 · Internal backfill</td><td>Every brand we already serve gets fully on product, collecting. ~$200K sits on the table, and <b>these are the first ten raving fans</b>. This lane de-risks the year before a single cold email sends.</td></tr>
+    <tr><td class="n">2 · Flagships</td><td>Swig, Crumbl, one more named. Taylor co-sells every flagship with Shideler.</td></tr>
+    <tr><td class="n">3 · Outbound + channels</td><td>The Mindbody sequence (~1,800 brands, 63 Tier-1 queued), tuned weekly by sales. Professional channels: <b>Taylor leads strategic CPAs · Shideler leads attorneys · brokers, FSOs and partnerships co-built, rolling under sales.</b> The Akerman/FDD lane is already live.</td></tr>
+  </table>
+  <div class="quote">Pipeline = demo taken, in HubSpot, with a dollar value. ~$3M of demo-taken pipeline at ~33% close = $1M. The pace that feeds it: 5 verified demos a week. The last two weeks ran 0 to 2. Fixing that pace is the single highest-leverage move in the company.</div>
+
+  <h3 class="sub">Inbound: routing and the 24-hour rule</h3>
+  <table>
+    <tr><td class="n" style="width:220px">Speed to lead</td><td><b>Warm referrals get a reply within 24 hours, no exceptions.</b> The desk drafts, the owner sends.</td></tr>
+    <tr><td class="n">Routing</td><td>Brand-level inbound → Shideler. Franchisee bookkeeping inbound → Services. Taylor is architecting that inbound accounting motion with Kayden and Jared now, then handing it to Zac and Brad so a lead never waits on a handoff. One voice per brand, always.</td></tr>
+  </table>
+
+  <h3 class="sub">Crediting, made exact: every deal carries one 15% budget</h3>
+  <p class="lead">One rule removes every gray area: <b>total selling cost on any deal is capped at 15% of first-year revenue.</b> Commissions and referral fees come out of the same budget. Every dollar of closed revenue counts toward OTE and equity gates no matter the channel; only the cash rate changes with who did the finding.</p>
+  <table>
+    <tr><th style="width:250px">Channel</th><th style="width:150px">Cash to sales</th><th style="width:100px">OTE credit</th><th>How the 15% budget works</th></tr>
+    <tr><td class="n">You sourced it</td><td><b>8%</b> · 15% past quota</td><td>Full</td><td>No referral owed; the unused 7% stays in the house</td></tr>
+    <tr><td class="n">House inbound you close</td><td><b>5%</b></td><td>Full</td><td>The house generated the lead; closing earns the influenced rate</td></tr>
+    <tr><td class="n">Partner / broker referred</td><td><b>What remains after the referral fee, up to 5%</b></td><td>Full</td><td>Referral fee pays first. <b>Negotiation discretion is real:</b> negotiate the partner to 10% and sales keeps the remaining 5%. If the fee consumes the budget, cash is zero but OTE credit still counts in full.</td></tr>
+    <tr><td class="n">Bookkeeping on brands you sourced</td><td><b>5% of first-year collected</b></td><td>Counts to OTE + equity gates</td><td>12-month window from brand go-live, paid quarterly as collected; services owns the 50% close responsibility</td></tr>
+  </table>
+</section>
+
+<!-- 6 THE TABLES -->
+<section>
+  <div class="kicker">6 · The growth tables: what we're signing</div>
+  <h2 class="serif">$2.0M target, $2.5M stretch, and the unit math underneath.</h2>
+  <table>
+    <tr><th style="width:100px"></th><th style="width:95px">Target</th><th style="width:95px">Stretch</th><th>The build</th></tr>
+    <tr><td class="n">Services</td><td>$1.25M</td><td>$1.5M</td><td>Existing pipeline + Terry's book (Taylor owns to 100% by Q4-end) reaches $1.25M on its own. The last ~$250K = ~50 new bookkeeping accounts fed by the units new logos hand over.</td></tr>
+    <tr><td class="n">Product</td><td>$750K</td><td>$1M</td><td>~$250K current run-rate <b>+ ~$500K net-new signed and activated.</b> The $500K is the 20-logo blend: 3 flagships (~$340K) + ~17 growth-stage (~$426K) puts ~$766K of platform ARR against it. Stretch = CFO attach + in-year opens on the same logos.</td></tr>
+    <tr><td class="n ember">Company</td><td class="ember"><b>$2.0M</b></td><td class="ember"><b>$2.5M</b></td><td>Target is the platform math. Stretch is the same logos fully worked.</td></tr>
+  </table>
+
+  <h3 class="sub">Activated units: the real math</h3>
+  <table>
+    <tr><th style="width:300px">Where the units live</th><th style="width:120px">Units</th><th>Status</th></tr>
+    <tr><td class="n">Existing base (services + product brands)</td><td>~99</td><td>Internal backfill converts these to live and collecting</td></tr>
+    <tr><td class="n">3 flagships at ~200 units</td><td>~600</td><td>As they close and open</td></tr>
+    <tr><td class="n">~17 growth-stage logos at ~40 units</td><td>~680</td><td>As they close</td></tr>
+    <tr><td class="n ember">The activation pool if the year lands</td><td class="ember"><b>~1,300+</b></td><td>Product's job: every unit under a signed brand, connected and collecting</td></tr>
+  </table>
+  <p class="lead" style="margin-top:14px"><b>The standard is simple: every unit under a signed brand gets activated. All of them. 100%, no opt-out.</b> We are not aiming at 300 of 1,300; we are aiming at all 1,300 that exist by year-end. The reason the December 31 snapshot shows ~300 to 400 live is timing, not ambition: most of the 1,300 belong to brands that close in Q3 and Q4, and their units enter the pool late in the year. Units signed early must be live, period.</p>
+  <p class="lead" style="margin-top:10px"><b>So the number we manage weekly is a rate, not a count: percentage of signed-brand units live.</b> The target for that rate is 100% within the activation window of each brand's close date. And nobody activates one unit at a time: a brand connects 30 to 200 units in one motion, a firm connects a whole book. Deka took six weeks for one brand; batching is how the same effort yields ten times the units. The 300 to 400 year-end figure is simply what a 100% standard produces given when the deals land.</p>
+</section>
+
+<!-- 7 ORG -->
+<section>
+  <div class="movement">Part III · Who owns what</div>
+  <div class="kicker">7 · Organization</div>
+  <h2 class="serif">Four lanes toward one number. Overlaps are named, not accidental.</h2>
+  <p class="lead"><b>One structural rule sits above the lanes: everyone is heard, and then the CEO decides pace and direction.</b> We have run the alternative and we know exactly what it costs: decisions relitigated weekly, shifting targets, momentum bleeding into confusion about what we were even building. That era is what this document ends. This is also the team we hire into: people who want clear lanes, a fast cadence, and a decider, and who find that energizing rather than confining.</p>
+  <div class="role">
+    <div class="hd"><h3>Taylor · CEO, the umbrella</h3><div class="metric">Coherence · capital · the unblocks</div></div>
+    <p class="owns"><b>Owns:</b> company strategy and the final voice after everyone is heard · fundraise and the investor lane · product management with Kayden · Terry's relationship and migration to 100% · <b>co-sells every flagship with Shideler</b> · <b>architects the inbound accounting-lead motion</b> (with Kayden and Jared, handing to Zac and Brad as it goes live) · <b>leads strategic CPA relationships</b> · cross-entity disputes · the operating cadence · pulls the Friday metrics (Stripe, Mercury, Ramp, HubSpot, Karbon, Linear, PostHog).</p>
+    <p class="not"><b>Does not own:</b> delivery, engineering trade-offs, or the pipelines. If I'm in your lane uninvited, say so.</p>
+  </div>
+  <div class="role">
+    <div class="hd"><h3>Kayden · CTO, Rollup (product & AI)</h3><div class="metric">Activated units = revenue</div></div>
+    <p class="owns"><b>Owns:</b> architecture, the data layer, integrations: POS and payments first, expanding into labor, payroll, and scheduling data to round out the picture a CFO actually needs · the activation machine (connected AND collecting, in batches) · <b>the CFO stack and the compliance-layer roadmap. He becomes a student of the CFO job:</b> we build what the CFO needs, with Jared as customer zero and the strongest voice on that roadmap · build-less-activate-more discipline. Matt: payments + POS integrations, reporting to Kayden.</p>
+    <p class="not"><b>Does not own:</b> what services sells, how books get done, or the franchisee experience (that gets a dedicated owner as it scales).</p>
+  </div>
+  <div class="role">
+    <div class="hd"><h3>Jared · CEO, CoverPanda Services</h3><div class="metric">Net new services ARR + the margin path</div></div>
+    <p class="owns"><b>Owns:</b> services P&L, delivery, pricing · the 11/10 standard (the bar for everything, including future marketplace firms) · the 45→65% gross-margin path, with elected growth-burn stated quarterly · capacity: Brad and Zac run day-to-day · the CFO product-customer seat: his feedback IS the product spec · proposes distributions and profit-sharing first, as CFO.</p>
+    <p class="not"><b>Does not own:</b> product roadmap beyond the CFO/compliance lane · the sales pipeline.</p>
+  </div>
+  <div class="role">
+    <div class="hd"><h3>Shideler · Founding Head of Sales</h3><div class="metric">Net New ARR, signed and activated</div></div>
+    <p class="owns"><b>Owns:</b> the outbound motion and the pipeline (demo-taken, always accurate in HubSpot) · new logos + partnerships · the brand relationship: one voice per brand, the sales check-in, brand trainings with services · <b>leads attorney relationships</b> · co-builds brokers, FSOs and partnerships with Taylor, rolling under sales.</p>
+    <p class="not"><b>Does not own:</b> delivery (no services demos, ever) · activation engineering · unit tracking. Pay conversations go through Taylor, period.</p>
+  </div>
+  <table style="margin-top:16px">
+    <tr><th style="width:130px">Also on the field</th><th>Lane</th></tr>
+    <tr><td class="n">Matt</td><td>Payments + POS integrations → Kayden</td></tr>
+    <tr><td class="n">Brad · Zac</td><td>Services delivery day-to-day, Terry execution, account health → Jared</td></tr>
+    <tr><td class="n">Val</td><td>Cadence, tracking, the Friday machine → Taylor</td></tr>
+  </table>
+
+  <h3 class="sub">The cadence</h3>
+  <table>
+    <tr><td class="n" style="width:170px">Daily</td><td>Standup: Matt, Kayden, Taylor, Shideler, Jared. Live feedback, not Slack threads.</td></tr>
+    <tr><td class="n ember">Friday</td><td><b>A conversation, not homework.</b> Taylor pulls the metrics beforehand: Stripe, Mercury, Ramp, HubSpot, Karbon, Linear, and PostHog, with product and services instrumented separately. The meeting is the recap against those numbers and <b>the priorities for the coming week</b>, so Monday starts decided. Standing item: <b>the two running boards of ten raving fans</b> (product + services), with internal backfill as the first ten.</td></tr>
+    <tr><td class="n">Monthly · 90 min</td><td>The four of us: what's falling off, what changes. Position problems get named at the month mark, not year-end.</td></tr>
+    <tr><td class="n">Quarterly</td><td>Commissions on MRR · tranche check: issued or missed · scorecards re-signed.</td></tr>
+  </table>
+</section>
+
+<!-- 8 COMP -->
+<section>
+  <div class="movement">Part IV · How we're paid</div>
+  <div class="kicker">8 · Compensation: five layers, plain words</div>
+  <h2 class="serif">Each layer pays for one thing, so equity stops paying for five.</h2>
+  <table>
+    <tr><th style="width:170px">Layer</th><th>In plain words</th></tr>
+    <tr><td class="n">1 · Salary</td><td>What you're paid for the job, today. It's under market on purpose: roughly $380K of gross profit currently covers the whole team before any of us. <b>The gap between your pay and market pay is written down every quarter</b>, so it's owed, not forgotten.</td></tr>
+    <tr><td class="n">2 · True-up</td><td>Old unpaid amounts and accrued balances, caught up in cash on a schedule. Scoped this month, separately, so the past stops leaking into every other conversation.</td></tr>
+    <tr><td class="n ember">3 · The $2.0M gate</td><td><b>Hit the target and three things happen at once: the cash bonus pool pays, salaries step up to the funded band, and the first equity rung vests.</b> One number, three payouts.</td></tr>
+    <tr><td class="n">4 · Profit sharing</td><td><b>Pinned, deliberately.</b> When arms produce real profit, the order will be: reinvest first (hiring, growth), hold a cash reserve, then share. The specific terms are negotiated at a dedicated session later, once there is profit worth arguing about. It is not part of today's asks.</td></tr>
+    <tr><td class="n">5 · Equity</td><td>Ownership of what you build, on the ladders in section 9.</td></tr>
+  </table>
+
+  <h3 class="sub">The packages, benchmarked</h3>
+  <table>
+    <tr><th style="width:110px">Person</th><th style="width:200px">Today, actual</th><th>At the $2.0M gate or the raise</th><th style="width:225px">Market reference</th></tr>
+    <tr><td class="n">Taylor</td><td>$80K</td><td>Seed CEO band ~$130–155K</td><td>Kruze 2026: seed CEO avg $153K; Series A $203K</td></tr>
+    <tr><td class="n">Kayden</td><td>$80K</td><td>Seed CTO band ~$130–140K</td><td>Kruze 2026: seed CTO ~$134K</td></tr>
+    <tr><td class="n">Jared</td><td>$80–100K (as previously set)</td><td>Seed finance-leader band ~$135–150K</td><td>Kruze 2026: seed COO/ops ~$135K; startup CFO bands run higher at scale</td></tr>
+    <tr><td class="n ember">Shideler</td><td><b>Base $80K</b> (up from $60K) · commission <b>8%</b> (down from 10%) · 15% uncapped past quota · <b>OTE unchanged: $160K at quota, $235K at stretch</b></td><td>Base steps toward the funded revenue-leader band ($120–180K)</td><td>Standard SaaS sales comp: quota ≈ 4–6× OTE; blended commission 8–12% of net-new ARR</td></tr>
+  </table>
+  <p class="note">On titles: the market columns reference CEO/CTO/CFO/CRO-shaped roles as anchors. We may or may not carry those titles at today's scale; the point of the comparison is different: <b>cash sits at or below the seed band until the gate, and equity sits far above what those roles are ever granted at market.</b> That is the deliberate trade, and it is why the upper equity rungs double as the senior-executive path.</p>
+  <p class="note">The Shideler rebalance, shown so the math is auditable: $80K base + (8% × $1M = $80K) = <b>$160K at quota</b>; add (15% × the $500K past quota = $75K) = <b>$235K at stretch</b>. Same OTE, same quota, same activation gating, same deliverables: a $20K higher floor traded against a lower base rate, not a raise. Sources: Kruze Consulting 2026 Startup CEO Compensation Report, n=550+ VC-backed startups (kruzeconsulting.com/blog/startup-ceo-salary-report); Pilot's founder salary survey ($75K average across a broader earlier-stage sample) marks the floor we all pass once bands kick in; sales ratios are standard SaaS benchmarks (Bridge Group / Pave ranges), directional.</p>
+</section>
+
+<!-- 9 EQUITY -->
+<section>
+  <div class="kicker">9 · Equity: the structure, then each person's full position</div>
+  <h2 class="serif">One umbrella, many arms. Own where you build, earn into what your work feeds.</h2>
+  <div class="org">
+    <div class="box"><div class="t">Rollup · the product and AI company</div><div class="s">Taylor 40 · Kayden 40 · pool 20 (funds both 5% role paths + future hires). Holds voting control of the umbrella permanently, with an economic floor of 51%.</div></div>
+    <div class="down">↓ owns 51%+ of</div>
+    <div class="box"><div class="t">CoverPanda Services · the umbrella</div><div class="s">The incentive side: Taylor, Jared and Shideler ladders to 14% each · Kayden's protected direct stake to 3% · 4% team pool</div></div>
+    <div class="down">↓ the umbrella owns 51%+ of every arm</div>
+    <div class="arms">
+      <div class="arm live"><div class="n2">Accounting</div><div class="p">live · Jared 49%, frozen</div></div>
+      <div class="arm"><div class="n2">Line 2 · payroll / AP-AR</div><div class="p">operator earns up to 25%</div></div>
+      <div class="arm"><div class="n2">Line 3 · tax / compliance</div><div class="p">operator earns up to 25%</div></div>
+      <div class="arm"><div class="n2">Lending / future</div><div class="p">same template · no unilateral launches</div></div>
+    </div>
+  </div>
+  <p class="note">Expansion in one breath: every new arm is born 100% umbrella-owned, so <b>adding a line never dilutes your umbrella percentage. It makes the percentage worth more.</b> The operator who runs an arm earns up to 25%, milestone-vested; above that takes unanimous founders, keeping accounting's 49% the exception rather than the precedent.</p>
+
+  <h3 class="sub">Each person's full position</h3>
+  <table>
+    <tr><th style="width:110px">Taylor</th><th style="width:210px">Where</th><th>Terms</th></tr>
+    <tr><td class="n">40%</td><td>Rollup</td><td>Founder common; goes on the same 4-year vest with credit for time served as Kayden's</td></tr>
+    <tr><td class="n">5% → 14%</td><td>Services umbrella</td><td>Starter + rungs at $2M / $3M / $6M blended collected. Personal keys: line 1 revenue-positive + the brand playbook, then the brand channel producing</td></tr>
+    <tr><td class="n">Loans</td><td>Fronted capital</td><td>Papered as founder loans, never points</td></tr>
+  </table>
+  <table>
+    <tr><th style="width:110px">Kayden</th><th style="width:210px">Where</th><th>Terms</th></tr>
+    <tr><td class="n">40%</td><td>Rollup</td><td>Founder common, same vest treatment as Taylor's</td></tr>
+    <tr><td class="n">0% → 3%</td><td>Services umbrella, <b>held direct</b></td><td><b>Dilution-protected: product fundraising never touches it.</b> Full acceleration if product winds down or he's pushed out without cause. Gates: line-2 technical foundation at the $3M rung · an acquisition migrated end-to-end on his rails at $6M</td></tr>
+    <tr><td class="n">~20.4%</td><td>Look-through via Rollup's 51%</td><td>The largest indirect services position in the company; the direct 3% exists to hold him level through two rounds of product dilution</td></tr>
+  </table>
+  <table>
+    <tr><th style="width:110px">Jared</th><th style="width:210px">Where</th><th>Terms</th></tr>
+    <tr><td class="n">49%</td><td>Accounting arm</td><td>Frozen. The largest operator position in the company</td></tr>
+    <tr><td class="n">5% → 14%</td><td>Services umbrella</td><td>Starter + rungs. Personal keys: delivery runs a full quarter without him at ≥50% margin, then line 2 launched under his lead at ≥60%. The umbrella ladder IS his exposure to every arm we add</td></tr>
+    <tr><td class="n ember">0% → 5%</td><td>Rollup, back-weighted</td><td>0.5% internal-first complete · 0.5% portal live at his standard with 10 paying accounts · 1.0% at $500K collected product ARR from the CFO lane · <b>1.5% line 2 launched with its product layer live · 1.5% at $2M collected product ARR from services-originated brands.</b> The last 3% pays for scale, not effort</td></tr>
+  </table>
+  <table>
+    <tr><th style="width:110px">Shideler</th><th style="width:210px">Where</th><th>Terms</th></tr>
+    <tr><td class="n">5% → 14%</td><td>Services umbrella</td><td>Starter + rungs. Personal keys: $1M cumulative sourced at rung 1 · $2.5M at rung 2 · a channel program live and producing at rung 3</td></tr>
+    <tr><td class="n ember">0% → 5%</td><td>Rollup, back-weighted, on cumulative activated Net New ARR</td><td>0.25% at $0.5M · 0.25% at $1M (this year's quota) · 0.5% at $2.5M · 1.0% at $4M · <b>1.5% at $6M · 1.5% at $10M.</b> The last two tranches are worth six times the first two, on purpose: $10M is the prize, not $1.5M</td></tr>
+    <tr><td class="n">Cash engine</td><td>Commissions</td><td>The OTE and uncapped accelerator in section 8 run alongside, every year</td></tr>
+  </table>
+  <p class="note"><b>Who funds whom:</b> Kayden funds all three umbrella ladders through Rollup's earn-down from 100% to the 51% floor (~19.6 look-through points forgone) · Taylor, Jared and Shideler each trim one umbrella point to fund Kayden's direct stake · both founders pre-funded the Rollup pool that pays both 5% role paths (pool check: 5 + 5 = 10 of 20, leaving 10 for hires, topped up at the raise). Every grant is an exchange, not a gift. <b>Vesting on everything:</b> milestone + 4-year time vest with credit for time served · 1-year cliff · double-trigger acceleration · missed quarters delay, never forfeit · vested is yours forever. Rollup's voting control never moves; its economic share steps down if it misses its quarterly obligations to Services. <b>Benchmark context:</b> role equity for a seed-stage head of sales typically runs 0.5–1.5%, senior exec grants 1–2% (Carta/Pave ranges, directional). Both 5% paths and the 14% umbrella ladders sit far above market deliberately: this team is paid like founders because the outcome we are asking for is a founder's outcome. <b>And the upper rungs are the executive path made explicit:</b> hitting them requires operating at senior-executive scope (a revenue organization behind the sales tranches, a multi-line services company behind Jared's, a compliance-grade platform behind Kayden's), so vesting the top of your ladder and earning the executive seat are the same event, not two negotiations.</p>
+</section>
+
+<!-- 10 FIVE YEAR -->
+<section>
+  <div class="kicker">10 · The five-year play</div>
+  <h2 class="serif">The plan is the floor. The bar is what best-in-class did with the same hand.</h2>
+  <table>
+    <tr><th style="width:110px">Year end</th><th>The plan (blended collected)</th><th class="ember">The bar (Haven / Delightree pace)</th><th>Illustrative value at the bar</th></tr>
+    <tr><td class="n">2026</td><td>$2.0M target · $2.5M stretch</td><td class="ember">$2.5M</td><td>~$20–30M</td></tr>
+    <tr><td class="n">2027</td><td>$3.3M</td><td class="ember">$5–6M</td><td>~$45–75M</td></tr>
+    <tr><td class="n">2028</td><td>$5.6M</td><td class="ember">$10–12M</td><td>~$90–150M</td></tr>
+    <tr><td class="n">2029</td><td>$9M</td><td class="ember">$18–20M</td><td class="ember"><b>$150–300M+</b></td></tr>
+  </table>
+  <p class="note">Multiples: services 4–8×, product 10–15×, and the blended platform 12–18× only arrives at ~65% gross margin, which is why Jared's margin path is the single biggest lever on everyone's equity value. <b>Read the two columns the right way: the gates are set on the plan so nobody's equity depends on heroics, but the company steers at the bar.</b> The bar is Haven's ladder-speed and Delightree's adoption-speed applied to our base, and it is the pace we resource for, hire for, and hold ourselves to. July's +34.4% is bar pace, not plan pace.</p>
+  <div class="track"><div class="done"></div></div>
+  <div class="stops">
+    <div class="stop"><div class="dot on"></div><div class="amt">~$800K</div><div class="lbl">today · collected · live-metered</div></div>
+    <div class="stop"><div class="dot gate"></div><div class="amt">$2.0M</div><div class="lbl"><b class="ember">Dec 31</b> · rung 1 + bonuses + salary step</div></div>
+    <div class="stop"><div class="dot gate"></div><div class="amt">$3M</div><div class="lbl">rung 2 · ~2027</div></div>
+    <div class="stop"><div class="dot"></div><div class="amt">$6M</div><div class="lbl">rung 3 + second line live</div></div>
+    <div class="stop"><div class="dot"></div><div class="amt">$10M</div><div class="lbl">Shideler's final tranche · CRO-scale org</div></div>
+    <div class="stop"><div class="dot gate"></div><div class="amt">Exit-ready</div><div class="lbl">the thesis, applied to ourselves</div></div>
+  </div>
+</section>
+
+<!-- 11 CONTROL + COMMIT -->
+<section>
+  <div class="movement">Part V · The commitment</div>
+  <div class="kicker">11 · What I'm asking for, and what we each sign</div>
+  <h2 class="serif">I'm asking for control of direction and pace. Here's why, and here's the trade.</h2>
+  <p class="lead">I will listen to everyone, every time. Then one person decides, fast, and we all row. This is not about ego; it's that we have lived the alternative: too many voices, decisions relitigated weekly, momentum bleeding into confusion. Speed is the strategy, and speed needs one decider. The trade is everything in this document: your lanes are yours without interference, your economics are locked and deliberately above market, the gates cut both ways including against Rollup and against me, and if we're nowhere near the number on December 31, the table convenes on me first. I don't want to leave this to chance, and I'm asking you not to want that either.</p>
+  <ol class="commit">
+    <li><b>The moat:</b> the financial and compliance OS for franchise systems; the FDD and its renewal is the prize; exit-ready is the thesis. Claimed externally as we staff it.</li>
+    <li><b>The numbers:</b> Services $1.25M/$1.5M · Product $750K/$1M · Company $2.0M/$2.5M · 300/400 activated units from the ~1,300-unit pool. Each lead signs their own.</li>
+    <li><b>The lanes:</b> as written in section 7, including the named overlaps: flagship co-sell, the CPA/attorney split, the inbound build.</li>
+    <li><b>The comp stack:</b> five layers · Shideler to $80K base with OTE unchanged · bands step at $2.0M · true-ups scoped this month.</li>
+    <li><b>The equity:</b> the structure diagram, all four position tables, both back-weighted 5% Rollup paths, the funding flows, the vesting rules. To counsel this week.</li>
+    <li><b>The inbound rules:</b> the 24-hour warm SLA · routing · the 15% budget cap and crediting table · one voice per brand · pay talks through Taylor.</li>
+    <li><b>The cadence:</b> daily standup · Friday metrics-recap and next-week priorities with the two fan boards · monthly 90-minute accountability · quarterly tranche checks.</li>
+    <li><b>Control:</b> everyone heard, one decider, no relitigating. If you can't sign this one, say it today.</li>
+  </ol>
+  <p class="note">Contested items get a name and a date today, not a "we'll circle back." Final written structure within 48 hours, then counsel, then we go be the company Accel just told the world should exist.</p>
+  <footer>CoverPanda · leadership working draft v2 · not for distribution</footer>
+</section>
+
+</div>
+</body>
+</html>

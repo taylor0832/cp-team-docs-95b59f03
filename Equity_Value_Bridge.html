@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The value bridge · how the numbers are derived</title>
+<style>
+  :root{--canvas:#fbfaf8;--ink:#1a1613;--muted:#6b645c;--hairline:#e8e4de;--ember:#ff3e00;--moss:#5c7a5c}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--canvas);color:var(--ink);font-family:'Instrument Sans','Helvetica Neue',Arial,sans-serif;line-height:1.5}
+  .serif{font-family:'Fraunces',Georgia,'Times New Roman',serif;font-weight:500}
+  .wrap{max-width:980px;margin:0 auto;padding:44px 32px 90px}
+  section{padding:38px 0;border-bottom:1px solid var(--hairline)}
+  section:last-child{border-bottom:none}
+  .kicker{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+  .kicker::before{content:"";display:inline-block;width:26px;height:1px;background:var(--ember);vertical-align:middle;margin-right:10px}
+  h1{font-size:36px;line-height:1.14;margin-bottom:14px}
+  h2{font-size:23px;line-height:1.18;margin-bottom:10px}
+  h3.sub{font-family:'Fraunces',Georgia,serif;font-weight:500;font-size:17px;margin:22px 0 8px}
+  p.lead{font-size:15px;max-width:78ch}
+  p.note{font-size:12.5px;color:var(--muted);max-width:80ch;margin-top:12px}
+  .ember{color:var(--ember)}
+  table{width:100%;border-collapse:collapse;margin-top:14px;font-size:13px}
+  th{text-align:left;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600;padding:0 10px 8px 0;border-bottom:1px solid var(--ink)}
+  td{padding:9px 10px 9px 0;border-bottom:1px solid var(--hairline);vertical-align:top;font-variant-numeric:tabular-nums}
+  td.n{font-family:'Fraunces',Georgia,serif;font-weight:500;font-size:13.5px;white-space:nowrap}
+  tr.sum td{border-top:1.5px solid var(--ink);font-weight:600}
+  .quote{font-size:19px;line-height:1.45;font-style:italic;max-width:66ch;margin:18px 0;padding-left:18px;border-left:2px solid var(--ember)}
+  .scen{border:1px solid var(--hairline);border-radius:10px;padding:18px 20px;margin-top:14px;background:#fff9}
+  .scen .lab{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ember);margin-bottom:6px}
+  footer{padding-top:28px;font-size:12px;color:var(--muted)}
+  @media print{section{page-break-inside:avoid}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<section>
+  <div class="kicker">Internal · the math behind the equity numbers</div>
+  <h1 class="serif">The value bridge:<br>one revenue number, three very different outcomes.</h1>
+  <p class="lead">This exists because the same question keeps producing different answers: "what is my stake worth at the $6M gate?" The honest answer depends on two choices, not one: <b>which company we've become</b> (the floor, the thesis, or the bar) and <b>how we financed getting there</b> (bootstrapped, one round, or two). That gives a grid of scenarios, not a single number, and the spread across the grid is not confusion. It is the strategy, priced. Below: every input, every layer, every person, sum-checked so anyone can re-run the arithmetic.</p>
+</section>
+
+<section>
+  <div class="kicker">Start here · the whole document in one table</div>
+  <h2 class="serif">What each of us holds, and what it's worth in each world.</h2>
+  <table>
+    <tr><th style="width:110px"></th><th>A · The floor<br><span style="font-family:inherit;font-weight:400;text-transform:none;letter-spacing:0;font-size:11px">$6M revenue, sold as "services + software" · ~$51M company</span></th><th class="ember">B · The thesis<br><span style="font-family:inherit;font-weight:400;text-transform:none;letter-spacing:0;font-size:11px">same $6M, valued as one platform · ~$90M company</span></th><th>C · The bar<br><span style="font-family:inherit;font-weight:400;text-transform:none;letter-spacing:0;font-size:11px">~$19M by 2029 at the platform multiple · ~$250M company</span></th></tr>
+    <tr><td class="n">Taylor</td><td>~$16M</td><td class="ember">~$26M</td><td>~$70–90M</td></tr>
+    <tr><td class="n">Kayden</td><td>~$15M</td><td class="ember">~$22M</td><td>~$65–80M</td></tr>
+    <tr><td class="n">Jared</td><td>~$10M</td><td class="ember">~$24M</td><td>~$42–52M</td></tr>
+    <tr><td class="n">Shideler</td><td>~$4M</td><td class="ember">~$7M</td><td>~$18–23M</td></tr>
+  </table>
+  <p class="lead" style="margin-top:16px">How to read it: <b>the floor</b> is what happens if we grow but never earn the platform multiple. <b>The thesis</b> is the same revenue with margin at ~65% and product at half the mix. <b>The bar</b> is Haven/Delightree speed. Moving left to right is the entire strategy: <b>margin and mix take you from A to B; speed takes you from B to C.</b> Everything below is the receipts: where each number comes from, layer by layer, plus what fundraising does to each cell.</p>
+  <p class="note">All figures: full earn of every ladder, stated multiples, pre-tax, bootstrapped (the fundraising section shows the funded versions). Never promises; always "at these multiples, if we execute."</p>
+</section>
+
+<section>
+  <div class="kicker">1 · Why numbers have differed across our documents</div>
+  <h2 class="serif">Three scenarios were being quoted as if they were one.</h2>
+  <table>
+    <tr><th style="width:210px">Scenario</th><th>What it assumes</th><th style="width:190px">Company value at $6M revenue</th></tr>
+    <tr><td class="n">A · The floor</td><td>Services and product valued <b>separately</b> (services 6×, product 12×). What a buyer pays if we're still "an accounting firm plus software"</td><td><b>~$51M</b></td></tr>
+    <tr><td class="n ember">B · The thesis</td><td>The <b>platform multiple</b> (12–18×, mid 15×): one integrated financial OS at ~65% blended gross margin, product ≈ 40%+ of mix</td><td class="ember"><b>~$72–108M (mid ~$90M)</b></td></tr>
+    <tr><td class="n">C · The bar</td><td>Haven/Delightree pace: <b>~$19M revenue by 2029</b> at the platform multiple</td><td><b>~$230–285M</b></td></tr>
+  </table>
+  <p class="note">Older documents (the May equity model) quoted figures like "$41M post-A." Those were built on a since-retired forecast ($10M ARR in 2027, the old $4M-2026 target) and the old cap table, and they are superseded by everything below. The floor/thesis/bar framing replaces them.</p>
+  <div class="quote">The gap between A and B is Jared's margin path and the mix shift. The gap between B and C is speed. Nothing else moves the numbers as much as those two things, which is exactly why they are the two things the whole plan manages.</div>
+</section>
+
+<section>
+  <div class="kicker">2 · The inputs (identical across scenarios)</div>
+  <h2 class="serif">Cap table positions at full earn, and how the layers stack.</h2>
+  <table>
+    <tr><th style="width:230px">Layer</th><th>Ownership at full earn</th></tr>
+    <tr><td class="n">Accounting arm</td><td>Jared 49% (frozen) · umbrella 51%</td></tr>
+    <tr><td class="n">Line 2 (by the $6M gate it exists)</td><td>Operator ~20% (illustrative, within the up-to-25% template) · umbrella ~80%</td></tr>
+    <tr><td class="n">Services umbrella</td><td>Rollup 51% · Taylor 14% · Jared 14% · Shideler 14% · Kayden 3% (direct, dilution-protected) · team pool 4%</td></tr>
+    <tr><td class="n">Rollup</td><td>Taylor 40% · Kayden 40% · Jared 5% · Shideler 5% · pool 10% remaining</td></tr>
+  </table>
+  <p class="note">Revenue split at the $6M gate: services ~$3.5M, product ~$2.5M. Within services, accounting ≈ two-thirds of value, line 2 ≈ one-third (illustrative). Entity values flow up the stack: arms → umbrella (via its 51–80% arm stakes) → Rollup (via its 51% umbrella stake). Every person's total = direct arm stake + umbrella stake + Rollup stake. No layer is counted twice.</p>
+</section>
+
+<section>
+  <div class="kicker">3 · Scenario A, fully derived: the floor at the $6M gate</div>
+  <h2 class="serif">Separate multiples: services $21M, product $30M.</h2>
+  <p class="lead">In one sentence: we reach $6M of revenue, but a buyer still sees two businesses stapled together and prices each on its own.</p>
+  <div class="scen">
+    <div class="lab">Step 1 · Entity values</div>
+    <table>
+      <tr><td class="n" style="width:340px">Services system: $3.5M × 6×</td><td>$21.0M → accounting arm $14.0M + line 2 $7.0M</td></tr>
+      <tr><td class="n">Umbrella's holdings: 51% × $14M + 80% × $7M</td><td>$7.1M + $5.6M = <b>$12.7M umbrella value</b></td></tr>
+      <tr><td class="n">Product: $2.5M × 12×</td><td>$30.0M</td></tr>
+      <tr><td class="n">Rollup entity: $30M + 51% × $12.7M</td><td><b>$36.5M</b></td></tr>
+    </table>
+  </div>
+  <div class="scen">
+    <div class="lab">Step 2 · Per person, layer by layer (sum-checked)</div>
+    <table>
+      <tr><th style="width:110px"></th><th>Arm stakes</th><th>Umbrella stake</th><th>Rollup stake</th><th style="width:110px">Total</th></tr>
+      <tr><td class="n">Taylor</td><td>·</td><td>14% × $12.7M = $1.8M</td><td>40% × $36.5M = $14.6M</td><td><b>~$16.4M</b></td></tr>
+      <tr><td class="n">Kayden</td><td>·</td><td>3% × $12.7M = $0.4M</td><td>40% × $36.5M = $14.6M</td><td><b>~$15.0M</b></td></tr>
+      <tr><td class="n">Jared</td><td>49% × $14M = $6.9M</td><td>14% × $12.7M = $1.8M</td><td>5% × $36.5M = $1.8M</td><td><b>~$10.5M</b></td></tr>
+      <tr><td class="n">Shideler</td><td>·</td><td>14% × $12.7M = $1.8M</td><td>5% × $36.5M = $1.8M</td><td><b>~$3.6M</b> + cumulative commissions</td></tr>
+      <tr><td class="n">Others</td><td>L2 operator $1.4M</td><td>pool $0.5M</td><td>pool $3.7M</td><td>~$5.6M</td></tr>
+      <tr class="sum"><td class="n">Sum-check</td><td colspan="3">All holders across all layers</td><td><b>$51.1M ✓</b></td></tr>
+    </table>
+  </div>
+  <p class="note">This is the scenario behind the "$19M" figure quoted earlier (that version counted one layer slightly generously; the clean, sum-checked number is ~$16M). It is the outcome if we hit $6M of revenue <b>but never earn the platform multiple</b>: real money, and nobody's best case.</p>
+</section>
+
+<section>
+  <div class="kicker">4 · Scenario B: the same $6M, valued as the thesis</div>
+  <h2 class="serif">The platform multiple. Same revenue, same cap table, and the company is worth ~$90M instead of $51M.</h2>
+  <p class="lead">In one sentence: identical revenue, but margin has hit ~65% and product is 40%+ of the mix, so the whole company prices as one financial OS.</p>
+  <div class="scen">
+    <div class="lab">Step 1 · Entity values at 15× blended (range 12–18×)</div>
+    <table>
+      <tr><td class="n" style="width:340px">Company: $6M × 15×</td><td>$90M → services share $52.5M · product share $37.5M (pro-rata to revenue)</td></tr>
+      <tr><td class="n">Arms: accounting $35M + line 2 $17.5M</td><td>Umbrella holdings: 51% × $35M + 80% × $17.5M = <b>$31.9M</b></td></tr>
+      <tr><td class="n">Rollup entity: $37.5M + 51% × $31.9M</td><td><b>$53.7M</b></td></tr>
+    </table>
+  </div>
+  <div class="scen">
+    <div class="lab">Step 2 · Per person (sum-checked to $90M)</div>
+    <table>
+      <tr><th style="width:110px"></th><th>Arm stakes</th><th>Umbrella stake</th><th>Rollup stake</th><th style="width:130px">Total (at 15×)</th></tr>
+      <tr><td class="n">Taylor</td><td>·</td><td>14% × $31.9M = $4.5M</td><td>40% × $53.7M = $21.5M</td><td><b>~$26M</b> (range $21–31M)</td></tr>
+      <tr><td class="n">Jared</td><td>49% × $35M = $17.2M</td><td>14% × $31.9M = $4.5M</td><td>5% × $53.7M = $2.7M</td><td><b>~$24M</b> (range $19–29M)</td></tr>
+      <tr><td class="n">Kayden</td><td>·</td><td>3% × $31.9M = $1.0M</td><td>40% × $53.7M = $21.5M</td><td><b>~$22M</b> (range $18–27M)</td></tr>
+      <tr><td class="n">Shideler</td><td>·</td><td>14% × $31.9M = $4.5M</td><td>5% × $53.7M = $2.7M</td><td><b>~$7M</b> (range $6–9M) + commissions</td></tr>
+    </table>
+  </div>
+  <div class="quote">Same $6M of revenue. The floor pays Taylor ~$16M; the thesis pays ~$26M. And notice Jared: the platform multiple lifts his accounting stake more than anyone's, from ~$10M to ~$24M. The margin path he owns is literally the biggest lever on his own outcome.</div>
+</section>
+
+<section>
+  <div class="kicker">5 · Scenario C: the bar</div>
+  <h2 class="serif">~$19M revenue by 2029 at the platform multiple: a ~$230–285M company.</h2>
+  <p class="lead">In one sentence: the thesis, executed at the speed Haven and Delightree just proved is possible.</p>
+  <table>
+    <tr><th style="width:110px"></th><th>How it builds (at ~$250M mid)</th><th style="width:150px">Total</th></tr>
+    <tr><td class="n">Taylor</td><td>40% of Rollup entity ($172M) + 14% of umbrella ($79M)</td><td><b>~$70–90M</b></td></tr>
+    <tr><td class="n">Kayden</td><td>40% of Rollup entity + 3% direct</td><td><b>~$65–80M</b></td></tr>
+    <tr><td class="n">Jared</td><td>49% of accounting + 14% umbrella + 5% Rollup</td><td><b>~$42–52M</b></td></tr>
+    <tr><td class="n">Shideler</td><td>14% umbrella + 5% Rollup</td><td><b>~$18–23M</b> + years of accelerator commissions</td></tr>
+  </table>
+  <p class="note">Assumptions at the bar: revenue ~$19M split roughly half product, accounting ~45% of services value with multiple lines live, platform multiple 12–15× at ~65% blended margin. Ranges reflect the multiple band.</p>
+</section>
+
+<section>
+  <div class="kicker">6 · The fundraising overlay</div>
+  <h2 class="serif">Same outcomes, three funding paths. Dilution hits Rollup, never the umbrella.</h2>
+  <p class="lead">Raises happen at Rollup, the product company. That means <b>the umbrella ladders (14% each), Kayden's 3% direct stake, and Jared's 49% of accounting never dilute.</b> Only Rollup-side holdings scale down when we take money. Assumptions, stated: a seed costs existing Rollup holders ~10%; a seed plus a Series A with a pool top-up costs ~27% cumulative (existing stakes scale by ~0.73). Both are standard-shaped rounds, not commitments.</p>
+  <table>
+    <tr><th style="width:230px">Rollup stakes</th><th>Bootstrapped</th><th>After one round</th><th>After two rounds</th></tr>
+    <tr><td class="n">Taylor · Kayden (each)</td><td>40%</td><td>~36%</td><td>~29%</td></tr>
+    <tr><td class="n">Jared · Shideler (each)</td><td>5%</td><td>~4.5%</td><td>~3.7%</td></tr>
+    <tr><td class="n">Umbrella + arm stakes</td><td colspan="3"><b>Unchanged in every case.</b> That is the design, and it protects all four of us</td></tr>
+  </table>
+
+  <h3 class="sub">Scenario B (the thesis, ~$90M company) under each funding path</h3>
+  <table>
+    <tr><th style="width:110px"></th><th>Bootstrapped</th><th>One round</th><th>Two rounds</th><th>What dilution actually cost</th></tr>
+    <tr><td class="n">Taylor</td><td>~$26M</td><td>~$24M</td><td>~$20M</td><td>~$6M of paper value across two rounds</td></tr>
+    <tr><td class="n">Kayden</td><td>~$22M</td><td>~$20M</td><td>~$17M</td><td>~$6M</td></tr>
+    <tr><td class="n">Jared</td><td>~$24M</td><td>~$24M</td><td>~$24M</td><td><b>~$0.7M. Barely moves.</b> His value sits in the arm and umbrella, which never dilute</td></tr>
+    <tr><td class="n">Shideler</td><td>~$7M</td><td>~$7M</td><td>~$6M</td><td>~$0.8M</td></tr>
+  </table>
+
+  <h3 class="sub">Scenario C (the bar, ~$250M company) under each funding path</h3>
+  <table>
+    <tr><th style="width:110px"></th><th>Bootstrapped</th><th>One round</th><th>Two rounds</th></tr>
+    <tr><td class="n">Taylor</td><td>~$80M</td><td>~$73M</td><td>~$61M</td></tr>
+    <tr><td class="n">Kayden</td><td>~$71M</td><td>~$64M</td><td>~$53M</td></tr>
+    <tr><td class="n">Jared</td><td>~$46M</td><td>~$45M</td><td>~$44M</td></tr>
+    <tr><td class="n">Shideler</td><td>~$20M</td><td>~$19M</td><td>~$17M</td></tr>
+  </table>
+  <div class="quote">Read the columns honestly and the fundraising question answers itself: two rounds cost Taylor and Kayden roughly a quarter of their Rollup-side paper value. So a raise is only rational if the capital moves us off the floor trajectory and onto the bar: dilution buys speed and probability, or it buys nothing. And the flip side is just as important: because the umbrella never dilutes, nobody at this table should fear the raise. Jared's column barely moves in any world.</div>
+  <p class="note">One more honest note: a bootstrapped Scenario C is the least likely cell in the grid. Haven and Delightree both raised to hit the paces we call the bar. The realistic best case is "one or two rounds, Scenario C," and those cells still read $17M to $73M per person. The raise is not the enemy of these numbers; slowness is.</p>
+</section>
+
+<section>
+  <div class="kicker">7 · The honest caveats</div>
+  <h2 class="serif">What makes these numbers sayable out loud.</h2>
+  <p class="lead">All figures are pre-tax, at full earn of every ladder, and at the stated multiples; the summary matrix above is the bootstrapped case, and section 6 shows exactly what one or two rounds do to each cell. The platform multiple in B and C is <b>earned, not assumed</b>: it requires ~65% blended gross margin and product at roughly half the mix. If either fails, scenario A is what a buyer pays. These are "at these multiples, if we execute" numbers, never promises.</p>
+  <div class="quote">Read the matrix left to right and it is the whole company strategy in one row: margin and mix move you from column A to B. Speed moves you from B to C. That is why the plan obsesses over exactly those two things and nothing else.</div>
+  <footer>CoverPanda · internal · value bridge v1 · every table sum-checks; re-run any cell</footer>
+</section>
+
+</div>
+</body>
+</html>
