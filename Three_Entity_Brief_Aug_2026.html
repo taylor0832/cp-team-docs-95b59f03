@@ -44,6 +44,18 @@
   .stat{border:1px solid var(--hairline);border-radius:10px;padding:14px 16px;background:#fff9}
   .stat .v{font-family:'Fraunces',Georgia,serif;font-weight:500;font-size:20px;color:var(--ember)}
   .stat .l{font-size:11.5px;color:var(--muted);margin-top:4px;line-height:1.4}
+  .adjgrid{display:grid;grid-template-columns:1.9fr auto 1fr;gap:16px;align-items:stretch;margin-top:20px}
+  .opcoduo{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .bridgecol{display:flex;flex-direction:column;justify-content:center;align-items:center;color:var(--ember);min-width:86px}
+  .bridgecol .arrow{font-size:26px;line-height:1}
+  .bridgecol .cap{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-align:center;margin-top:6px;max-width:96px}
+  @media(max-width:840px){
+    .adjgrid{grid-template-columns:1fr}
+    .opcoduo{grid-template-columns:1fr}
+    .bridgecol{flex-direction:row;gap:10px;padding:6px 0;min-width:0}
+    .bridgecol .arrow{transform:rotate(90deg)}
+    .bridgecol .cap{margin-top:0;max-width:none;text-align:left}
+  }
   footer{padding-top:30px;font-size:12px;color:var(--muted)}
   @media print{section{page-break-inside:avoid}}
 </style>
@@ -56,11 +68,20 @@
   <div class="kicker">Internal team brief · V4 · August 2026 · supersedes V3 (April) · refreshed quarterly · questions: Taylor</div>
   <h1 class="serif">One ICP. Two operating companies.<br>One founder-led foundry.</h1>
   <p class="lead">We don't run three random companies. We run an umbrella with two operating businesses, Product (Rollup) and Services (CoverPanda Services), plus an adjacent founder-led entity, <b>Franchise Foundry</b> (the evolution of B&amp;B Management), that operates brands, does deals, and funnels franchise systems into both. One ICP across all three: the franchisor. Since April: the market priced our category with real money, the ICP got sharper, and the foundry got its full-time operator.</p>
-  <div class="box"><div class="t">CoverPanda · the umbrella</div><div class="s">Two operating companies, one ICP, one game. CEO Taylor Byington</div></div>
-  <div class="trio" style="margin-top:12px">
-    <div class="card"><div class="who">No. 01 · Product opco</div><h3>Rollup</h3><p>Vertical AI SaaS + embedded payments + the data layer. The platform every persona logs into, and the compliance ladder we're climbing. Domain owner · Kayden Thomson</p></div>
-    <div class="card"><div class="who">No. 02 · Back-office opco</div><h3>CoverPanda Services</h3><p>AI-native back-office. CFO/advisory at the brand level; bookkeeping and adjacent services for the franchisees underneath. CEO · Jared Nielsen</p></div>
-    <div class="card" style="border-style:dashed;border-color:var(--ember)"><div class="who">Adjacent · founder-led</div><h3>Franchise Foundry</h3><p>Operator portfolio, acquisitions and brand plays, advisory + capital connect, the audience engine. CEO &amp; co-founder · Shideler Bennett. Structure in definition.</p></div>
+  <div class="adjgrid">
+    <div>
+      <div class="box" style="margin-top:0"><div class="t">CoverPanda · the umbrella</div><div class="s">Two operating companies, one ICP, one game · CEO Taylor Byington</div></div>
+      <div class="down">↓ the two operating companies inside</div>
+      <div class="opcoduo">
+        <div class="card"><div class="who">No. 01 · Product opco</div><h3>Rollup</h3><p>Vertical AI SaaS + embedded payments + the data layer. The platform every persona logs into, and the compliance ladder we're climbing. Domain owner · Kayden Thomson</p></div>
+        <div class="card"><div class="who">No. 02 · Back-office opco</div><h3>CoverPanda Services</h3><p>AI-native back-office. CFO/advisory at the brand level; bookkeeping and adjacent services for the franchisees underneath. CEO · Jared Nielsen</p></div>
+      </div>
+    </div>
+    <div class="bridgecol">
+      <div class="arrow">⇄</div>
+      <div class="cap">adjacent · arms-length · brands funnel in · stack + back-office fulfill</div>
+    </div>
+    <div class="adj" style="margin-top:0;display:flex;flex-direction:column;justify-content:center"><div class="who" style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ember);margin-bottom:7px">Adjacent · founder-led</div><h3 class="serif" style="font-size:16.5px;margin-bottom:6px">Franchise Foundry</h3><p style="font-size:13px">Operator portfolio, acquisitions and brand plays, advisory + capital connect, the audience engine (the Eight Figures podcast). CEO &amp; co-founder · Shideler Bennett. Structure in definition.</p></div>
   </div>
 </section>
 
@@ -241,6 +262,48 @@
 <section>
   <div class="kicker">The system · how the three connect</div>
   <h2 class="serif">Read it as a loop, not a chart.</h2>
+  <svg viewBox="0 0 940 330" style="width:100%;max-width:940px;margin-top:18px" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="How the three entities connect around the franchisor">
+    <defs>
+      <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#ff3e00"/></marker>
+      <marker id="arrg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6b645c"/></marker>
+    </defs>
+    <!-- Foundry -->
+    <rect x="18" y="120" width="212" height="92" rx="10" fill="#fffdf9" stroke="#ff3e00" stroke-dasharray="5 4"/>
+    <text x="124" y="150" text-anchor="middle" font-family="Georgia,serif" font-size="15" fill="#1a1613">Franchise Foundry</text>
+    <text x="124" y="170" text-anchor="middle" font-size="10.5" fill="#6b645c">front door · advisory + capital +</text>
+    <text x="124" y="184" text-anchor="middle" font-size="10.5" fill="#6b645c">operating credibility + audience</text>
+    <!-- Franchisor -->
+    <rect x="368" y="122" width="204" height="88" rx="44" fill="#fff" stroke="#1a1613" stroke-width="1.4"/>
+    <text x="470" y="158" text-anchor="middle" font-family="Georgia,serif" font-size="15" fill="#1a1613">The Franchisor</text>
+    <text x="470" y="178" text-anchor="middle" font-size="10.5" fill="#6b645c">the single ICP, across all three</text>
+    <!-- Rollup -->
+    <rect x="712" y="24" width="210" height="84" rx="10" fill="#fffdf9" stroke="#e8e4de"/>
+    <text x="817" y="54" text-anchor="middle" font-family="Georgia,serif" font-size="14.5" fill="#1a1613">Rollup</text>
+    <text x="817" y="73" text-anchor="middle" font-size="10.5" fill="#6b645c">platform fulfillment · payments,</text>
+    <text x="817" y="87" text-anchor="middle" font-size="10.5" fill="#6b645c">reporting, the compliance ladder</text>
+    <!-- Services -->
+    <rect x="712" y="224" width="210" height="84" rx="10" fill="#fffdf9" stroke="#e8e4de"/>
+    <text x="817" y="254" text-anchor="middle" font-family="Georgia,serif" font-size="14.5" fill="#1a1613">CoverPanda Services</text>
+    <text x="817" y="273" text-anchor="middle" font-size="10.5" fill="#6b645c">back-office fulfillment · books,</text>
+    <text x="817" y="287" text-anchor="middle" font-size="10.5" fill="#6b645c">CFO, the 11/10 standard</text>
+    <!-- Foundry -> Franchisor -->
+    <line x1="230" y1="166" x2="362" y2="166" stroke="#ff3e00" stroke-width="1.6" marker-end="url(#arr)"/>
+    <text x="296" y="156" text-anchor="middle" font-size="10.5" fill="#ff3e00">engages</text>
+    <!-- Franchisor -> Rollup -->
+    <line x1="565" y1="132" x2="706" y2="72" stroke="#6b645c" stroke-width="1.4" marker-end="url(#arrg)"/>
+    <text x="642" y="88" text-anchor="middle" font-size="10.5" fill="#6b645c">adopts the platform</text>
+    <!-- Franchisor -> Services -->
+    <line x1="565" y1="200" x2="706" y2="260" stroke="#6b645c" stroke-width="1.4" marker-end="url(#arrg)"/>
+    <text x="642" y="248" text-anchor="middle" font-size="10.5" fill="#6b645c">adopts the back-office</text>
+    <!-- Rollup <-> Services -->
+    <line x1="817" y1="112" x2="817" y2="220" stroke="#6b645c" stroke-width="1.2" stroke-dasharray="4 4" marker-end="url(#arrg)" marker-start="url(#arrg)"/>
+    <text x="833" y="169" font-size="10" fill="#6b645c">data feeds product ·</text>
+    <text x="833" y="182" font-size="10" fill="#6b645c">misses logged back</text>
+    <!-- Return: umbrella -> Foundry (bottom curve) -->
+    <path d="M 712 300 C 400 335, 180 300, 110 218" fill="none" stroke="#ff3e00" stroke-width="1.2" stroke-dasharray="5 4" marker-end="url(#arr)"/>
+    <text x="400" y="322" text-anchor="middle" font-size="10.5" fill="#ff3e00">brand + unit data flows back · sharper advisory, better deals, attributed referrals both ways</text>
+  </svg>
+
   <table>
     <tr><td class="n">Loop 01</td><td>Foundry engages a brand on advisory, capital, or operations → the brand needs a tech stack (Rollup) and a back-office (Services) → both attach, attributed.</td></tr>
     <tr><td class="n">Loop 02</td><td>Services delivers on the platform → every miss becomes a Linear issue, every win a sales reference → the data makes the product smarter.</td></tr>
