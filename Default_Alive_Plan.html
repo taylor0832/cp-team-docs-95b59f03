@@ -1,0 +1,468 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="color-scheme" content="light dark">
+<title>CoverPanda — The Plan to Default Alive</title>
+<style>
+:root{
+  --ground:#FBFAF8; --panel:#FFFFFF; --ink:#191C21; --ink-2:#4A535F; --ink-3:#78828F;
+  --rule:#E2E0DA; --rule-2:#EFEDE8;
+  --accent:#0E6B61; --accent-soft:#E4F0EE; --accent-ink:#0A4A43;
+  --crit:#B0332A; --crit-soft:#FBE9E7;
+  --warn:#9A6410; --warn-soft:#FBF1DF;
+  --good:#2C6E44; --good-soft:#E6F1E9;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ground:#131519; --panel:#1A1D22; --ink:#E9EAEC; --ink-2:#A8B0BA; --ink-3:#79828E;
+    --rule:#2B2F36; --rule-2:#22262C;
+    --accent:#4FB8A9; --accent-soft:#12312E; --accent-ink:#8FD6CB;
+    --crit:#E8776B; --crit-soft:#3A1E1B;
+    --warn:#D9A24A; --warn-soft:#332614;
+    --good:#6FBE8A; --good-soft:#17301F;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#131519; --panel:#1A1D22; --ink:#E9EAEC; --ink-2:#A8B0BA; --ink-3:#79828E;
+  --rule:#2B2F36; --rule-2:#22262C;
+  --accent:#4FB8A9; --accent-soft:#12312E; --accent-ink:#8FD6CB;
+  --crit:#E8776B; --crit-soft:#3A1E1B;
+  --warn:#D9A24A; --warn-soft:#332614;
+  --good:#6FBE8A; --good-soft:#17301F;
+}
+*{box-sizing:border-box}
+body{background:var(--ground);color:var(--ink);font-family:var(--sans);
+  font-size:16.5px;line-height:1.62;margin:0;padding:0;-webkit-text-size-adjust:100%}
+.wrap{max-width:820px;margin:0 auto;padding:28px 20px 90px}
+h1,h2,h3{text-wrap:balance;line-height:1.2;margin:0}
+h1{font-size:clamp(28px,6.4vw,42px);font-weight:760;letter-spacing:-.022em}
+h2{font-size:clamp(21px,4vw,27px);font-weight:720;letter-spacing:-.015em;margin:0 0 6px}
+h3{font-size:17.5px;font-weight:700;letter-spacing:-.005em;margin:0 0 4px}
+p{margin:0}
+.stack{display:flex;flex-direction:column;gap:15px}
+.stack-lg{display:flex;flex-direction:column;gap:34px}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--accent);font-weight:600}
+.dek{color:var(--ink-2);font-size:15.5px}
+section{border-top:1.5px solid var(--rule);padding-top:20px;display:flex;flex-direction:column;gap:16px}
+header.hd{padding:6px 0 26px;display:flex;flex-direction:column;gap:14px}
+.meta{font-family:var(--mono);font-size:12px;color:var(--ink-3);line-height:1.75}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums;font-feature-settings:"tnum"}
+
+/* headline stat band */
+.band{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1.5px;
+  background:var(--rule);border:1.5px solid var(--rule);border-radius:3px;overflow:hidden}
+.cell{background:var(--panel);padding:14px 15px;display:flex;flex-direction:column;gap:3px}
+.cell .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3)}
+.cell .v{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:23px;font-weight:640;letter-spacing:-.02em}
+.cell .s{font-size:12.5px;color:var(--ink-2);line-height:1.45}
+.v.crit{color:var(--crit)} .v.good{color:var(--good)} .v.warn{color:var(--warn)}
+
+/* tables */
+.scroll{overflow-x:auto;border:1.5px solid var(--rule);border-radius:3px;background:var(--panel)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:480px}
+th,td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--rule-2);vertical-align:top}
+thead th{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--ink-3);font-weight:600;background:var(--ground);border-bottom:1.5px solid var(--rule);
+  position:sticky;top:0}
+td.n,th.n{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+tbody tr:last-child td{border-bottom:none}
+tr.tot td{font-weight:700;background:var(--accent-soft);border-top:1.5px solid var(--rule)}
+tr.sub td{background:var(--rule-2);font-weight:600}
+.pos{color:var(--good)} .neg{color:var(--crit)}
+
+/* callouts */
+.note{border:1.5px solid var(--rule);border-radius:3px;padding:14px 16px;background:var(--panel);
+  display:flex;flex-direction:column;gap:7px}
+.note.c{border-color:var(--crit);background:var(--crit-soft)}
+.note.w{border-color:var(--warn);background:var(--warn-soft)}
+.note.g{border-color:var(--good);background:var(--good-soft)}
+.note .lbl{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:700}
+.note.c .lbl{color:var(--crit)} .note.w .lbl{color:var(--warn)}
+.note.g .lbl{color:var(--good)} .note .lbl{color:var(--accent)}
+
+/* timeline ledger */
+.tl{display:flex;flex-direction:column;gap:0;border:1.5px solid var(--rule);border-radius:3px;
+  background:var(--panel);overflow:hidden}
+.tl .row{display:grid;grid-template-columns:96px 1fr;gap:0;border-bottom:1px solid var(--rule-2)}
+.tl .row:last-child{border-bottom:none}
+.tl .when{font-family:var(--mono);font-size:11.5px;font-weight:650;letter-spacing:.02em;
+  padding:14px 10px 14px 14px;color:var(--accent);background:var(--rule-2);line-height:1.4}
+.tl .what{padding:13px 15px;display:flex;flex-direction:column;gap:9px}
+.tl h3{font-size:15.5px}
+ul,ol{margin:0;padding-left:19px;display:flex;flex-direction:column;gap:6px}
+li{padding-left:2px}
+li::marker{color:var(--ink-3)}
+.chk{list-style:none;padding-left:0}
+.chk li{display:grid;grid-template-columns:19px 1fr;gap:7px;align-items:start}
+.chk li::before{content:"□";font-family:var(--mono);color:var(--accent);font-size:15px;line-height:1.5}
+.owner{font-family:var(--mono);font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--accent-ink);background:var(--accent-soft);padding:1.5px 6px;border-radius:2px;
+  font-weight:650;white-space:nowrap;border:1px solid var(--accent);display:inline-block}
+.money{font-family:var(--mono);font-variant-numeric:tabular-nums;font-weight:650;white-space:nowrap}
+.arith{font-family:var(--mono);font-size:12.5px;color:var(--ink-2);background:var(--rule-2);
+  padding:8px 11px;border-radius:3px;overflow-x:auto;white-space:nowrap}
+strong{font-weight:680}
+hr{border:none;border-top:1.5px solid var(--rule);margin:0}
+.foot{font-size:12.5px;color:var(--ink-3);line-height:1.65}
+a{color:var(--accent);text-decoration-thickness:1px;text-underline-offset:2px}
+a:focus-visible,li:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media (max-width:560px){
+  .tl .row{grid-template-columns:1fr}
+  .tl .when{padding:9px 14px 7px;background:var(--rule-2)}
+  body{font-size:16px}
+}
+</style>
+</head>
+<body>
+
+
+<div class="wrap">
+<header class="hd">
+  <div class="eyebrow">CoverPanda × Rollup · Operating plan</div>
+  <h1>How we don't run out of money</h1>
+  <p class="dek">Every figure below is pulled from the bank — Mercury API, three entities, 1 Jan–11 Aug 2026 — not from a report or a memory. Where a number differs from what we've been circulating, the bank wins and the difference is explained.</p>
+  <p class="meta">Built 11 Aug 2026, 11:45pm · Sources: Mercury API (513 transactions), Stripe Services restricted key, PostHog adoption snapshot, HubSpot<br>Non-negotiables for Kayden, Jared, Matt, Shideler, Val, Brad, Zac</p>
+</header>
+
+<div class="stack-lg">
+
+<section>
+  <div class="eyebrow">Start here</div>
+  <h2>The story we've been telling ourselves is wrong in one important way</h2>
+  <p>We have been saying the company burns <span class="num">$20,820</span>/mo and dies in December. The bank says something different, and it changes what we do.</p>
+
+  <div class="band">
+    <div class="cell"><span class="k">Group burn / mo</span><span class="v warn">−$8,707</span><span class="s">Not −$20,820. Prior figure double-counted the Holdings→Platform subsidy.</span></div>
+    <div class="cell"><span class="k">Group runway</span><span class="v">10.6 mo</span><span class="s">$92,391 cash ÷ $8,707. Not 4.4 months.</span></div>
+    <div class="cell"><span class="k">Services net / mo</span><span class="v good">+$12,555</span><span class="s">Genuinely profitable. It is the whole company right now.</span></div>
+    <div class="cell"><span class="k">Product net / mo</span><span class="v crit">−$22,484</span><span class="s">$7,975 revenue against $30,459 cost.</span></div>
+  </div>
+
+  <div class="note g">
+    <span class="lbl">What this means</span>
+    <p><strong>We are not a company that is dying. We are a profitable services company carrying a product company that loses $22,484 every month.</strong> The group has ten months. Product, standing alone, has about six weeks. Those are two completely different problems and we have been solving the wrong one.</p>
+  </div>
+
+  <div class="note c">
+    <span class="lbl">The date that is still real</span>
+    <p>Product holds <span class="num">$22,503</span>. Holdings — its only outside funder — holds <span class="num">$7,119</span> after wiring $20,000 on 11 Aug. That is <span class="num">$29,622</span> against a <span class="num">$22,484</span>/mo hole.</p>
+    <p class="arith">$29,622 ÷ $22,484 = 1.3 months → Product is unfunded on or about 20 SEPTEMBER 2026</p>
+    <p>After that, every product payroll is a decision to move Services' cash into Product. That is a choice we make deliberately, with a cap and an end date — or Product shrinks to fit its own revenue.</p>
+  </div>
+</section>
+
+<section>
+  <div class="eyebrow">The three P&amp;Ls</div>
+  <h2>Product and Services, separated properly</h2>
+  <p class="dek">Three clean full months — May, June, July 2026 — straight from the bank. Inter-entity transfers excluded from both sides so nothing is counted twice.</p>
+
+  <div class="scroll"><table>
+    <thead><tr><th>Line</th><th class="n">3 months</th><th class="n">Per month</th></tr></thead>
+    <tbody>
+      <tr class="sub"><td colspan="3">CORE COVERPANDA SERVICES</td></tr>
+      <tr><td>Revenue — Stripe collected</td><td class="n pos">169,099</td><td class="n pos">56,366</td></tr>
+      <tr><td>Payroll — Gusto</td><td class="n neg">−63,319</td><td class="n neg">−21,106</td></tr>
+      <tr><td>Ramp cards</td><td class="n neg">−25,811</td><td class="n neg">−8,604</td></tr>
+      <tr><td>SCALE ME (virtual assistants)</td><td class="n neg">−15,792</td><td class="n neg">−5,264</td></tr>
+      <tr><td>Shideler Bennett (contractor)</td><td class="n neg">−12,942</td><td class="n neg">−4,314</td></tr>
+      <tr><td>WSJ Partnership LLC</td><td class="n neg">−8,600</td><td class="n neg">−2,867</td></tr>
+      <tr><td>Cookies For Life LLC</td><td class="n neg">−2,392</td><td class="n neg">−797</td></tr>
+      <tr><td>American Express</td><td class="n neg">−1,780</td><td class="n neg">−593</td></tr>
+      <tr><td>Franchise Sidekick LLC</td><td class="n neg">−800</td><td class="n neg">−267</td></tr>
+      <tr class="tot"><td>Services net</td><td class="n pos">+37,664</td><td class="n pos">+12,555</td></tr>
+
+      <tr class="sub"><td colspan="3">KASA INSURANCE, LLC — runs through the Services account</td></tr>
+      <tr><td>Revenue — Old Oak Insurance</td><td class="n pos">6,748</td><td class="n pos">2,249</td></tr>
+      <tr><td>Thatch (health benefits)</td><td class="n neg">−5,305</td><td class="n neg">−1,768</td></tr>
+      <tr><td>Gusto (net of tax refunds)</td><td class="n pos">2,222</td><td class="n pos">741</td></tr>
+      <tr class="tot"><td>Insurance net</td><td class="n pos">+3,665</td><td class="n pos">+1,222</td></tr>
+
+      <tr class="sub"><td colspan="3">PLATFORM / PRODUCT</td></tr>
+      <tr><td>Revenue — Stripe (SaaS subscriptions)</td><td class="n pos">20,340</td><td class="n pos">6,780</td></tr>
+      <tr><td>Revenue — Rainforest (ACH fees collected)</td><td class="n pos">3,584</td><td class="n pos">1,195</td></tr>
+      <tr><td>Payroll — Gusto</td><td class="n neg">−90,975</td><td class="n neg">−30,325</td></tr>
+      <tr><td>PeopleKeep</td><td class="n neg">−403</td><td class="n neg">−134</td></tr>
+      <tr class="tot"><td>Product net</td><td class="n neg">−67,454</td><td class="n neg">−22,484</td></tr>
+
+      <tr class="tot"><td>GROUP NET</td><td class="n neg">−26,125</td><td class="n neg">−8,707</td></tr>
+    </tbody>
+  </table></div>
+
+  <p class="foot">Sizzling Platter paid Product a one-time <span class="num">$7,500</span> in the window. It is excluded from the run-rate above — including it would flatter Product by $2,500/mo. Holdings wired Product <span class="num">$75,000</span> across the same three months; that is a transfer, not revenue, and appears nowhere in the table.</p>
+
+  <div class="note w">
+    <span class="lbl">Kasa Insurance — the line nobody has been reporting</span>
+    <p>An entire second business runs payroll and benefits through the Services bank account: <strong>Kasa Insurance, LLC</strong>, with revenue arriving from Old Oak Insurance. It nets <strong>+$1,222/mo</strong>, so it is not a drain — but it has never appeared in a single weekly report, and its $1,768/mo of Thatch health premiums has been silently counted as CoverPanda Services overhead. It needs its own line from now on, or Services' margin is misstated in both directions.</p>
+  </div>
+</section>
+
+<section>
+  <div class="eyebrow">Cut immediately</div>
+  <h2>What comes out this week</h2>
+  <p class="dek">Ordered by damage done, least first. Nothing here touches engineering.</p>
+
+  <div class="scroll"><table>
+    <thead><tr><th>Cut</th><th class="n">$/mo</th><th>Why it goes, and when</th></tr></thead>
+    <tbody>
+      <tr><td><strong>SCALE ME</strong> (virtual assistants)</td><td class="n neg">−5,264</td><td>70 separate charges in three months. We concluded internally in July that it <em>adds</em> workload rather than removing it. Cancel this week. A part-time in-office assistant at ~$20/hr replaces it at a third the cost if we still want the help.</td></tr>
+      <tr><td><strong>Ramp card spend</strong> — audit, then cut 30%</td><td class="n neg">−2,581</td><td><span class="num">$8,604</span>/mo across two streams and <strong>nobody can name a single merchant</strong>, because the Ramp API credentials are still blank. July alone was $13,834 — 4.3× June. This is the largest unexamined line in the company.</td></tr>
+      <tr><td><strong>WSJ Partnership LLC</strong></td><td class="n neg">−2,867</td><td><span class="num">$2,150</span> twice in July. Confirm what this is (rent?), then decide. If it is office space we are not using at 1.3 months of product runway, it goes.</td></tr>
+      <tr><td><strong>Cookies For Life</strong>, <strong>Amex</strong>, <strong>Franchise Sidekick</strong></td><td class="n neg">−1,657</td><td>Small, unexamined, recurring. Each gets a named owner and a keep/kill answer by Friday.</td></tr>
+      <tr class="tot"><td>Total available without touching a single person's job</td><td class="n neg">−12,369</td><td>Group burn goes from −$8,707 to <strong class="pos">+$3,662/mo</strong>. The group is default alive on cuts alone.</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="note c">
+    <span class="lbl">The Ramp credentials are the single highest-value thing anyone can do tomorrow</span>
+    <p>Three fields have been empty for four weeks: <span class="num">RAMP_CLIENT_ID</span>, <span class="num">RAMP_CLIENT_SECRET</span>, <span class="num">STRIPE_SAAS_KEY</span>. Until they are filled we are cutting <span class="num">$8,604</span>/mo of spend blind and we cannot report product revenue at all. Filling them takes under an hour and is worth more than any meeting on the calendar.</p>
+  </div>
+
+  <div class="note">
+    <span class="lbl">If cuts alone are not enough — the published order</span>
+    <p>This order is published so nobody has to guess, and so it is decided in advance rather than under pressure.</p>
+    <ol>
+      <li><strong>Vendors</strong> — the $12,369 above. <span class="owner">this week</span></li>
+      <li><strong>Shideler's fixed comp → commission</strong>, $4,314/mo. The 10 Aug decision already established the head-of-sales role as defined is not his role. <span class="owner">Sept 1</span></li>
+      <li><strong>Taylor + Kayden defer 40% of salary</strong>, ~$8,800/mo, papered as documented catch-up claims — deferred, not forfeited. <span class="owner">Sept 15</span></li>
+      <li><strong>Matt</strong> — last, and only if 1–3 plus revenue have failed. <span class="owner">Oct 1</span></li>
+    </ol>
+    <p><strong>Matt is deliberately last.</strong> His Square work produced 59 newly-adopted units in one week and it is the prerequisite for turning on payments at Crispy Cones, Stella's, DonutNV and Zerorez. Cutting the activation engine during an activation blitz is the one move that guarantees the plan fails. Founder pay gets deferred before engineering gets cut.</p>
+  </div>
+</section>
+
+<section>
+  <div class="eyebrow">Revenue model</div>
+  <h2>Where product revenue actually comes from</h2>
+  <p class="dek">Our pricing, applied to our real brands and real unit counts. No forecast multipliers, no assumed win rates — this is what the units in front of us are worth at list price.</p>
+
+  <div class="arith">Platform base $249/brand/mo · Onboarding portal $199/mo · Closing portal $199/mo · Unit connection + consolidated financials $30/unit/mo · ACH 1% of volume</div>
+
+  <h3>Brands we already bill</h3>
+  <div class="scroll"><table>
+    <thead><tr><th>Brand</th><th class="n">Eligible</th><th class="n">Paying</th><th class="n">Billing now</th><th class="n">At full</th><th class="n">Gap /mo</th></tr></thead>
+    <tbody>
+      <tr><td>DonutNV</td><td class="n">143</td><td class="n">77</td><td class="n">2,310</td><td class="n">4,290</td><td class="n neg">1,980</td></tr>
+      <tr><td>Deka Lash</td><td class="n">87</td><td class="n">87</td><td class="n">2,610</td><td class="n">2,610</td><td class="n">—</td></tr>
+      <tr><td>Crispy Cones</td><td class="n">32</td><td class="n">32</td><td class="n">960</td><td class="n">960</td><td class="n">—</td></tr>
+      <tr><td>2nd Family</td><td class="n">21</td><td class="n">21</td><td class="n">630</td><td class="n">630</td><td class="n">—</td></tr>
+      <tr><td>B&amp;B Management</td><td class="n">14</td><td class="n">12</td><td class="n">360</td><td class="n">420</td><td class="n neg">60</td></tr>
+      <tr><td>Melty Franchising</td><td class="n">10</td><td class="n">0</td><td class="n">0</td><td class="n">300</td><td class="n neg">300</td></tr>
+      <tr><td>Stella's Ice Cream</td><td class="n">7</td><td class="n">7</td><td class="n">210</td><td class="n">210</td><td class="n">—</td></tr>
+      <tr><td>Thermo S</td><td class="n">2</td><td class="n">2</td><td class="n">60</td><td class="n">60</td><td class="n">—</td></tr>
+      <tr class="tot"><td>Unit revenue</td><td class="n">316</td><td class="n">238</td><td class="n">7,140</td><td class="n">9,480</td><td class="n neg">2,340</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="note">
+    <span class="lbl">A reconciliation that proves the model — and finds money</span>
+    <p>238 paying units × $30 = <span class="num">$7,140</span>/mo. Product's actual Stripe revenue is <span class="num">$6,780</span>/mo. Those agree within 5%, which tells us the $30/unit line is real and correctly billed.</p>
+    <p><strong>It also tells us the platform base fee is not being collected.</strong> Eight paying brands × $249 = <span class="num">$1,992</span>/mo that should be on every invoice and does not appear in the revenue. That is not a sale — it is an invoice correction.</p>
+  </div>
+
+  <h3>The four product revenue levers, in order of certainty</h3>
+  <div class="scroll"><table>
+    <thead><tr><th>Lever</th><th class="n">$/mo</th><th>What it actually is</th><th>Owner</th></tr></thead>
+    <tbody>
+      <tr><td><strong>1. Collect the ACH fee we already charge</strong></td><td class="n pos">+5,088</td><td>Platform moved <span class="num">$628K</span>/mo of payments. At 1% that is <span class="num">$6,283</span>/mo. We banked <span class="num">$1,195</span>. Two independent methods agree the gap is $4.4–5.1K/mo — the fee is assessed and never lands.</td><td><span class="owner">Kayden</span></td></tr>
+      <tr><td><strong>2. Bill the $249 platform base</strong></td><td class="n pos">+1,992</td><td>8 brands × $249, apparently never invoiced.</td><td><span class="owner">Kayden</span></td></tr>
+      <tr><td><strong>3. DonutNV's 66 unpaid units</strong></td><td class="n pos">+1,980</td><td>Inside a brand that already pays us. 143 eligible, 77 paying. Commercial motion, not engineering.</td><td><span class="owner">Taylor</span></td></tr>
+      <tr><td><strong>4. Melty (10) + B&amp;B (2) + base</strong></td><td class="n pos">+849</td><td>Melty closed in July and bills nothing at all.</td><td><span class="owner">Taylor</span></td></tr>
+      <tr><td>Accountant workspace @ $10/unit</td><td class="n pos">+450</td><td>Jeff Kinney's ~45 Deka locations. Kayden's call: "not perfect but good enough to sell."</td><td><span class="owner">Kayden</span></td></tr>
+      <tr class="tot"><td>Existing customers only — no new logo</td><td class="n pos">+10,359</td><td>Product revenue $7,975 → <strong>$18,334/mo</strong></td><td></td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>New logos, priced at our list</h3>
+  <div class="scroll"><table>
+    <thead><tr><th>Deal</th><th class="n">Units</th><th>Build</th><th class="n">$/mo</th><th class="n">ARR</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Zerorez</strong> — Deka-sized, warm, price objection</td><td class="n">87</td><td class="num">87×$30 + $249 + $199</td><td class="n pos">3,058</td><td class="n pos">36,696</td></tr>
+      <tr><td><strong>Swig</strong> — open at Appointment Held</td><td class="n">200</td><td class="num">200×$30 + $249 + $199</td><td class="n pos">6,448</td><td class="n pos">77,376</td></tr>
+      <tr><td>beem — <em>83 units, zero paying, cold since Jan 2025</em></td><td class="n">83</td><td colspan="3"><strong>Excluded.</strong> Pipeline, not a lever. Eligible is not a customer.</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="note c">
+    <span class="lbl">The hard truth about Product</span>
+    <p>Add every lever <em>and</em> both flagship deals:</p>
+    <p class="arith">$7,975 + $10,359 + $3,058 (Zerorez) + $6,448 (Swig) = $27,840/mo revenue vs $30,459/mo cost = −$2,619/mo</p>
+    <p><strong>Product still does not break even — even if we win everything.</strong> And if Shideler's commission moves onto Product as planned, the shortfall becomes roughly −$6,900/mo. Product's payroll is $30,325/mo against $7,975/mo of revenue; no realistic 2026 activation plan closes a 3.8× gap.</p>
+  </div>
+
+  <div class="note g">
+    <span class="lbl">The move that does fix it</span>
+    <p><strong>Taylor's salary moves from Product to Services.</strong> He is the one closing Terry, the accountant channel and the services logos — Services is where his revenue lands, so that is where his cost belongs. This is a correct allocation, not an accounting trick, and Services can afford it at +$12,555/mo.</p>
+    <p class="arith">Product cost $30,459 − ~$10,100 = $20,359/mo · Levers 1–4 revenue $18,334 → −$2,025/mo · + Zerorez $3,058 → +$1,033/mo</p>
+    <p><strong>Product reaches default alive in November on existing customers plus one deal.</strong> That is the target, and it is reachable without cutting Matt.</p>
+  </div>
+</section>
+
+<section>
+  <div class="eyebrow">Collections</div>
+  <h2>The money we already earned and never took</h2>
+  <p class="dek">This is the fastest cash in the business and none of it requires a sale.</p>
+
+  <div class="scroll"><table>
+    <thead><tr><th>What</th><th class="n">Amount</th><th>Nature</th><th>Owner</th></tr></thead>
+    <tbody>
+      <tr><td>Past-due subscriptions — 20 accounts</td><td class="n">16,084<span style="color:var(--ink-3)">/mo</span></td><td>Contracted MRR, 30.3% of live subscription dollars. Not churn — collections.</td><td><span class="owner">Jared</span></td></tr>
+      <tr><td>Open unpaid invoices — 46</td><td class="n">34,879</td><td>One-time. $11,669 of it is 90+ days and will not self-cure.</td><td><span class="owner">Jared</span></td></tr>
+      <tr><td>Failed charges YTD — 45</td><td class="n">34,315</td><td>22 of 45 are insufficient funds — a retry timing problem, not a lost customer.</td><td><span class="owner">Jared</span></td></tr>
+      <tr><td>ACH fees assessed, never banked</td><td class="n">5,088<span style="color:var(--ink-3)">/mo</span></td><td>See lever 1. Product side.</td><td><span class="owner">Kayden</span></td></tr>
+      <tr class="tot"><td>Recoverable at 60% on the recurring lines</td><td class="n pos">+12,738/mo</td><td colspan="2">Plus roughly $18K of one-time cash from AR and failed-charge retries.</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="note">
+    <span class="lbl">Put it next to sales, because the comparison is the strategy</span>
+    <p>Net-new booked between 1 and 11 August: <strong class="num">$5,400</strong> — that is <span class="num">$450</span>/mo. Available from customers who already pay us: <strong class="num">$36,520</strong>/mo. New MRR has fallen 84% since spring ($9,383/mo in Mar–Apr → $1,505/mo in Jun–Aug), average new deal size fell from $537/mo to $116/mo, and cold outbound is 0 replies on 57 delivered emails.</p>
+    <p><strong>Selling to people who already trust us is worth roughly eighty times the current new-logo motion.</strong> That is the whole go-to-market for the next sixty days.</p>
+  </div>
+</section>
+
+<section>
+  <div class="eyebrow">The schedule</div>
+  <h2>What happens, and by when</h2>
+
+  <div class="tl">
+    <div class="row"><div class="when">WED<br>12 AUG<br><span style="color:var(--ink-3)">team lunch</span></div><div class="what">
+      <h3>Say it out loud, and start the blitz</h3>
+      <ul class="chk">
+        <li>Name the <strong>20 September</strong> date for Product. No stalling it to the team.</li>
+        <li>Confirm the build freeze — <strong>nothing ships that doesn't put a user live by Friday</strong>. Exceptions need team sign-off.</li>
+        <li>Announce the vendor cuts in the room. SCALE ME cancelled today.</li>
+        <li>Publish the trim order, <strong>including that Matt is last</strong>. It stops the speculation.</li>
+        <li>Re-base the EOY target from $2.0M to <strong>$1.0–1.25M collected</strong>. The Aug 1 gate already triggered this.</li>
+        <li>Assign the five owned numbers (below). One name each.</li>
+      </ul>
+    </div></div>
+
+    <div class="row"><div class="when">FRI<br>14 AUG<br><span style="color:var(--ink-3)">end of week</span></div><div class="what">
+      <h3>Plumbing in, money out the door</h3>
+      <ul class="chk">
+        <li><span class="owner">Taylor</span> Fill <strong>RAMP_CLIENT_ID / SECRET</strong> and <strong>STRIPE_SAAS_KEY</strong>. Under an hour. Unblocks everything.</li>
+        <li><span class="owner">Kayden</span> Answer the one question: <strong>where do assessed ACH fees physically land?</strong> Worth $5,088/mo.</li>
+        <li><span class="owner">Kayden</span> Invoice the $249 platform base to all 8 paying brands. +$1,992/mo.</li>
+        <li><span class="owner">Jared</span> Dunning ladder live on all 20 past-due accounts.</li>
+        <li><span class="owner">Matt</span> Enough of Stripe payments live to onboard, and a written definition of what "live" means.</li>
+        <li><span class="owner">Matt</span> DonutNV activation complete.</li>
+        <li><span class="owner">Taylor</span> Zerorez follow-up call booked and held.</li>
+        <li><span class="owner">Taylor</span> Keep/kill answers on WSJ Partnership, Cookies For Life, Amex, Franchise Sidekick.</li>
+      </ul>
+    </div></div>
+
+    <div class="row"><div class="when">FRI<br>15 AUG</div><div class="what">
+      <h3>First checkpoint</h3>
+      <ul class="chk">
+        <li>Past-due below <strong>$12,000</strong>/mo (from $16,084).</li>
+        <li>Vendor cuts executed and visible in the bank — <strong>−$12,369/mo</strong>.</li>
+        <li>Product revenue reportable from Stripe for the first time in five weeks.</li>
+        <li>Ramp merchant detail on the table; the real cut number replaces my 30% estimate.</li>
+      </ul>
+    </div></div>
+
+    <div class="row"><div class="when">SUN<br>31 AUG<br><span style="color:var(--ink-3)">month end</span></div><div class="what">
+      <h3>Group default alive</h3>
+      <ul class="chk">
+        <li>Past-due below <strong>$9,000</strong>/mo. <span class="owner">Jared</span></li>
+        <li>Decision made and recorded on all 12 invoices at 90+ days: collect, negotiate, or write off. <span class="owner">Jared</span></li>
+        <li>ACH fee capture fixed and banking. <span class="owner">Kayden</span></li>
+        <li>DonutNV's 66 units commercially agreed. <span class="owner">Taylor</span></li>
+        <li>Melty billing. <span class="owner">Kayden</span></li>
+        <li><strong>Capital decision stated in writing</strong>: the cap and end date on Services→Product funding. <span class="owner">Taylor</span></li>
+        <li><strong>Group cash-flow positive.</strong> Target +$3,000/mo or better.</li>
+      </ul>
+    </div></div>
+
+    <div class="row"><div class="when">MON<br>15 SEP</div><div class="what">
+      <h3>The decision gate</h3>
+      <p>If past-due is not under $9,000/mo and the ACH fee is not banking, <strong>tier 3 executes without further discussion</strong> — Taylor and Kayden defer 40% of salary. This is decided now precisely so it is not argued about then.</p>
+      <ul class="chk">
+        <li>Shideler moved to commission-only. <span class="owner">Sept 1</span></li>
+        <li>Taylor's salary reallocated Product → Services.</li>
+        <li>Zerorez closed or dead. No third state.</li>
+      </ul>
+    </div></div>
+
+    <div class="row"><div class="when">TUE<br>30 SEP<br><span style="color:var(--ink-3)">quarter end</span></div><div class="what">
+      <h3>Product on its own feet</h3>
+      <ul class="chk">
+        <li>Product revenue <strong>$18,000+/mo</strong> — levers 1–4 fully banked.</li>
+        <li>Product cost under <strong>$20,500/mo</strong> after the salary reallocation.</li>
+        <li><strong>Product burn under $2,500/mo</strong>, with November as the crossover to positive.</li>
+        <li>Swig closed, or formally out of the 2026 model.</li>
+        <li>300 value-realizing units.</li>
+        <li>Group net <strong>+$15,000/mo</strong> or better.</li>
+      </ul>
+    </div></div>
+  </div>
+</section>
+
+<section>
+  <div class="eyebrow">Cadence</div>
+  <h2>The discipline that gets us there</h2>
+
+  <h3>Every day</h3>
+  <ul>
+    <li><strong>Taylor, first hour, before anything else:</strong> collections and expansion inside paying brands. Not new logos. New logos are the fourth priority and stay there until Product is default alive.</li>
+    <li><strong>One number posted daily:</strong> cash collected yesterday, both entities, one figure. Not bookings. Not pipeline. Cash.</li>
+    <li><strong>9:45 standup answers one question per person:</strong> what went live yesterday, and what goes live today. Not what was worked on.</li>
+    <li><strong>No build starts</strong> without a named brand that goes live because of it.</li>
+  </ul>
+
+  <h3>Every Friday — five numbers, five names</h3>
+  <div class="scroll"><table>
+    <thead><tr><th>Number</th><th>Owner</th><th>Bar</th></tr></thead>
+    <tbody>
+      <tr><td>Cash collected, both entities</td><td><span class="owner">Jared</span></td><td>Climbs every week. Past-due under $9K by 31 Aug.</td></tr>
+      <tr><td>Product revenue banked</td><td><span class="owner">Kayden</span></td><td>$18K/mo by 30 Sep. Reported from Stripe, not from a report.</td></tr>
+      <tr><td>Units live and billing</td><td><span class="owner">Matt</span></td><td>+10/week floor. 300 by 30 Sep.</td></tr>
+      <tr><td>Named-deal next step</td><td><span class="owner">Taylor</span></td><td>Zerorez and Swig each show a dated advance every week.</td></tr>
+      <tr><td>Weeks of funded Product runway</td><td><span class="owner">Taylor</span></td><td>Reported every Friday. Never surprises anyone.</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="note">
+    <span class="lbl">Non-negotiables</span>
+    <ol>
+      <li><strong>No new payroll of any kind</strong> until the group is cash-flow positive two months running. Including roles we want badly.</li>
+      <li><strong>No build without a named brand going live because of it.</strong> Sign-off required for exceptions.</li>
+      <li><strong>Every number has exactly one owner</strong>, and that owner reports it Friday whether it is good or bad.</li>
+      <li><strong>No externally quoted number that isn't from the Friday scoreboard.</strong> Not in an investor note, not on a call, not in a deck.</li>
+      <li><strong>Eligible is not a customer.</strong> beem's 83 units, Perspire and the MindBody accounts are pipeline. They never appear in a survival calculation.</li>
+      <li><strong>The trim order is published and does not get renegotiated in the moment.</strong> That is the entire point of writing it down in August.</li>
+    </ol>
+  </div>
+</section>
+
+<section>
+  <div class="eyebrow">Honesty</div>
+  <h2>Where this could be wrong</h2>
+  <div class="scroll"><table>
+    <thead><tr><th>Risk</th><th>Consequence if I'm wrong</th></tr></thead>
+    <tbody>
+      <tr><td><strong>The burn correction is the big one.</strong> I read −$8,707/mo where prior reports read −$20,820/mo. My build excludes Holdings→Platform transfers from both sides and uses three clean full months.</td><td>Confirm against QuickBooks before anyone quotes 10.6 months of runway externally. If QBO disagrees, QBO wins — it sees accruals and credit-card float that the bank does not.</td></tr>
+      <tr><td><strong>Ramp is $8,604/mo of complete darkness.</strong> My 30% cut is a guess.</td><td>Could be far more, could be zero. The API key settles it in an hour.</td></tr>
+      <tr><td><strong>Past-due recovery at 60% is an assumption.</strong></td><td>At 30%, the group is still positive after vendor cuts, but Product's timeline slips a month.</td></tr>
+      <tr><td><strong>Zerorez at 87 units is my estimate</strong> from "Deka-sized."</td><td>Get the real unit count on the follow-up call before it goes in any model.</td></tr>
+      <tr><td><strong>The $249 base fee may be intentionally waived</strong> rather than missed.</td><td>If waived, lever 2 is worth $0 and Product's crossover moves to December.</td></tr>
+      <tr><td><strong>Taylor's salary is estimated</strong> at ~$10,100/mo from Product payroll split three ways.</td><td>The reallocation math in the Product section moves with the real figure. Confirm from Gusto.</td></tr>
+    </tbody>
+  </table></div>
+  <p class="foot"><strong>Most confident in:</strong> the entity separation, the 20 September Product date, the $30/unit reconciliation, and that collections beat new logos by ~80×.<br><strong>Least confident in:</strong> anything after October, and the exact Ramp number.</p>
+</section>
+
+<hr>
+<p class="foot">Mercury API pulled 11 Aug 2026 across CoverPanda Services, Platform and Holdings · 513 transactions, 1 Jan–11 Aug · Stripe Services restricted read key · PostHog <span class="num">Organization Adoption Snapshot</span>, brands only, operator workspaces excluded · HubSpot pipeline · Product revenue proxied from bank deposits because <span class="num">STRIPE_SAAS_KEY</span> remains empty.</p>
+
+</div>
+</div>
+
+</body>
+</html>
