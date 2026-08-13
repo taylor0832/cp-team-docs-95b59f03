@@ -127,7 +127,7 @@ a:focus-visible,li:focus-visible{outline:2px solid var(--accent);outline-offset:
   <div class="eyebrow">CoverPanda × Rollup · Operating plan</div>
   <h1>How we don't run out of money</h1>
   <p class="dek">Every figure below is pulled from the bank — Mercury API, three entities, 1 Jan–11 Aug 2026 — not from a report or a memory. Where a number differs from what we've been circulating, the bank wins and the difference is explained.</p>
-  <p class="meta">Built 11 Aug 2026, 11:45pm · Sources: Mercury API (513 transactions), Stripe Services restricted key, PostHog adoption snapshot, HubSpot<br>Non-negotiables for Kayden, Jared, Matt, Shideler, Val, Brad, Zac</p>
+  <p class="meta">Built 11 Aug 2026 · revised 13 Aug with the Ramp card ledger and Shideler's 1 Sept transition<br>Sources: Mercury API (513 txns), Ramp API (273 card txns), Stripe Services restricted key, PostHog, HubSpot<br>Non-negotiables for Kayden, Jared, Matt, Shideler, Val, Brad, Zac</p>
 </header>
 
 <div class="stack-lg">
@@ -138,8 +138,8 @@ a:focus-visible,li:focus-visible{outline:2px solid var(--accent);outline-offset:
   <p>We have been saying the company burns <span class="num">$20,820</span>/mo and dies in December. The bank says something different, and it changes what we do.</p>
 
   <div class="band">
-    <div class="cell"><span class="k">Group burn / mo</span><span class="v warn">−$8,707</span><span class="s">Not −$20,820. Prior figure double-counted the Holdings→Platform subsidy.</span></div>
-    <div class="cell"><span class="k">Group runway</span><span class="v">10.6 mo</span><span class="s">$92,391 cash ÷ $8,707. Not 4.4 months.</span></div>
+    <div class="cell"><span class="k">Group burn / mo</span><span class="v warn">−$4,703</span><span class="s">From September, once Shideler moves to commission-only. −$9,017 in August. Prior reports said −$20,820.</span></div>
+    <div class="cell"><span class="k">Group runway</span><span class="v">20.2 mo</span><span class="s">$95,114 cash ÷ $4,703 from September. Not 4.4 months.</span></div>
     <div class="cell"><span class="k">Services net / mo</span><span class="v good">+$12,555</span><span class="s">Genuinely profitable. It is the whole company right now.</span></div>
     <div class="cell"><span class="k">Product net / mo</span><span class="v crit">−$22,484</span><span class="s">$7,975 revenue against $30,459 cost.</span></div>
   </div>
@@ -204,17 +204,31 @@ a:focus-visible,li:focus-visible{outline:2px solid var(--accent);outline-offset:
 
 <section>
   <div class="eyebrow">Cut immediately</div>
-  <h2>What comes out this week</h2>
+  <h2>What comes out, and what needs a decision</h2>
   <p class="dek">Ordered by damage done, least first. Nothing here touches engineering.</p>
 
   <div class="scroll"><table>
     <thead><tr><th>Cut</th><th class="n">$/mo</th><th>Why it goes, and when</th></tr></thead>
     <tbody>
-      <tr><td><strong>SCALE ME</strong> (virtual assistants)</td><td class="n neg">−5,264</td><td>70 separate charges in three months. We concluded internally in July that it <em>adds</em> workload rather than removing it. Cancel this week. A part-time in-office assistant at ~$20/hr replaces it at a third the cost if we still want the help.</td></tr>
-      <tr><td><strong>Ramp card spend</strong> — audit, then cut 30%</td><td class="n neg">−2,581</td><td><span class="num">$8,604</span>/mo across two streams and <strong>nobody can name a single merchant</strong>, because the Ramp API credentials are still blank. July alone was $13,834 — 4.3× June. This is the largest unexamined line in the company.</td></tr>
-      <tr><td><strong>WSJ Partnership LLC</strong></td><td class="n neg">−2,867</td><td><span class="num">$2,150</span> twice in July. Confirm what this is (rent?), then decide. If it is office space we are not using at 1.3 months of product runway, it goes.</td></tr>
-      <tr><td><strong>Cookies For Life</strong>, <strong>Amex</strong>, <strong>Franchise Sidekick</strong></td><td class="n neg">−1,657</td><td>Small, unexamined, recurring. Each gets a named owner and a keep/kill answer by Friday.</td></tr>
-      <tr class="tot"><td>Total available without touching a single person's job</td><td class="n neg">−12,369</td><td>Group burn goes from −$8,707 to <strong class="pos">+$3,662/mo</strong>. The group is default alive on cuts alone.</td></tr>
+      <tr><td><strong>Ramp — Fathom, overlapping AI tools, meals &amp; travel</strong></td><td class="n neg">−1,700</td><td>Now itemized from the card ledger: Fathom $271/mo likely duplicates Granola; Copilot $167 and CodeRabbit sit alongside Anthropic $575 and OpenAI $268; meals and travel run ~$460/mo. Defensible line by line.</td></tr>
+      <tr><td><strong>WSJ Partnership LLC</strong></td><td class="n neg">−2,867</td><td><span class="num">$2,150</span> twice in July. Confirm what this is (rent?), then decide. <strong>Not yet a decision.</strong></td></tr>
+      <tr><td><strong>Cookies For Life</strong>, <strong>Amex</strong>, <strong>Franchise Sidekick</strong></td><td class="n neg">−1,657</td><td>Small, unexamined, recurring. Each gets a named owner and a keep/kill answer by Friday. <strong>Not yet a decision.</strong></td></tr>
+      <tr class="tot"><td>Available if the four unknowns are all cut</td><td class="n neg">−6,224</td><td>Group goes from −$4,703/mo (September) to <strong class="pos">+$1,521/mo</strong>.</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="note">
+    <span class="lbl">SCALE ME is retained — correcting an earlier version of this page</span>
+    <p>An earlier draft listed SCALE ME ($5,264/mo) as a cut and attributed that to an internal conclusion. <strong>That was wrong.</strong> It came from a proposal raised in one July meeting, not a decision, and there is no intention to end it. It stays in the cost base throughout this plan.</p>
+  </div>
+
+  <div class="scroll"><table>
+    <thead><tr><th>Where the group actually lands</th><th class="n">$/mo</th><th>Runway on $95,114</th></tr></thead>
+    <tbody>
+      <tr><td>August — Shideler still on salary</td><td class="n neg">−9,017</td><td>10.5 months</td></tr>
+      <tr><td><strong>September — Shideler to commission-only</strong></td><td class="n neg">−4,703</td><td>20.2 months</td></tr>
+      <tr><td>September + Ramp trims</td><td class="n neg">−3,003</td><td>31.7 months</td></tr>
+      <tr class="tot"><td>September + Ramp trims + the four vendor decisions</td><td class="n pos">+1,521</td><td>Default alive</td></tr>
     </tbody>
   </table></div>
 
@@ -227,7 +241,7 @@ a:focus-visible,li:focus-visible{outline:2px solid var(--accent);outline-offset:
     <span class="lbl">If cuts alone are not enough — the published order</span>
     <p>This order is published so nobody has to guess, and so it is decided in advance rather than under pressure.</p>
     <ol>
-      <li><strong>Vendors</strong> — the $12,369 above. <span class="owner">this week</span></li>
+      <li><strong>Vendors</strong> — Ramp trims now, the four unknowns once decided. Up to $6,224. <span class="owner">this week</span></li>
       <li><strong>Shideler's fixed comp → commission</strong>, $4,314/mo. The 10 Aug decision already established the head-of-sales role as defined is not his role. <span class="owner">Sept 1</span></li>
       <li><strong>Taylor + Kayden defer 40% of salary</strong>, $5,795/mo, papered as documented catch-up claims — deferred, not forfeited. Both are on $80,000, so this tier is smaller than it looks. <span class="owner">Sept 15</span></li>
       <li><strong>Matt</strong> — last, and only if 1–3 plus revenue have failed. <span class="owner">Oct 1</span></li>
@@ -352,7 +366,7 @@ a:focus-visible,li:focus-visible{outline:2px solid var(--accent);outline-offset:
       <ul class="chk">
         <li>Name the <strong>20 September</strong> date for Product. No stalling it to the team.</li>
         <li>Confirm the build freeze — <strong>nothing ships that doesn't put a user live by Friday</strong>. Exceptions need team sign-off.</li>
-        <li>Announce the vendor cuts in the room. SCALE ME cancelled today.</li>
+        <li>Announce the Ramp trims in the room, and name owners for the four vendor decisions. <strong>SCALE ME is not being cut.</strong></li>
         <li>Publish the trim order, <strong>including that Matt is last</strong>. It stops the speculation.</li>
         <li>Re-base the EOY target from $2.0M to <strong>$1.0–1.25M collected</strong>. The Aug 1 gate already triggered this.</li>
         <li>Assign the five owned numbers (below). One name each.</li>
@@ -378,7 +392,7 @@ a:focus-visible,li:focus-visible{outline:2px solid var(--accent);outline-offset:
       <h3>First checkpoint</h3>
       <ul class="chk">
         <li>Past-due below <strong>$12,000</strong>/mo (from $16,084).</li>
-        <li>Vendor cuts executed and visible in the bank — <strong>−$12,369/mo</strong>.</li>
+        <li>Ramp trims executed and visible in the bank — <strong>−$1,700/mo</strong>; the four vendor decisions made.</li>
         <li>Product revenue reportable from Stripe for the first time in five weeks.</li>
         <li>Ramp merchant detail on the table; the real cut number replaces my 30% estimate.</li>
       </ul>
