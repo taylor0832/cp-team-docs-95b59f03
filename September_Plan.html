@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="color-scheme" content="light dark">
+<title>The September Plan — Product to Default Alive</title>
+<style>
+:root{
+  --ground:#FCFBF9; --panel:#FFFFFF; --ink:#16191D; --ink-2:#48525E; --ink-3:#7A8490;
+  --rule:#E1DFD9; --rule-2:#EFEDE7; --wash:#F5F3EF;
+  --accent:#0E6B61; --accent-soft:#E3EFED; --accent-ink:#0A4A43;
+  --crit:#AE332A; --crit-soft:#FAE8E6;
+  --warn:#96620F; --warn-soft:#FAF0DD;
+  --good:#2B6C43; --good-soft:#E5F0E8;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --ground:#121418; --panel:#191C21; --ink:#EAEBED; --ink-2:#A6AEB8; --ink-3:#78818D;
+  --rule:#2A2E35; --rule-2:#21252B; --wash:#1D2127;
+  --accent:#4FB8A9; --accent-soft:#11302D; --accent-ink:#8FD6CB;
+  --crit:#E6756A; --crit-soft:#391D1A;
+  --warn:#D6A04A; --warn-soft:#312513;
+  --good:#6DBC88; --good-soft:#162F1E;
+}}
+:root[data-theme="dark"]{
+  --ground:#121418; --panel:#191C21; --ink:#EAEBED; --ink-2:#A6AEB8; --ink-3:#78818D;
+  --rule:#2A2E35; --rule-2:#21252B; --wash:#1D2127;
+  --accent:#4FB8A9; --accent-soft:#11302D; --accent-ink:#8FD6CB;
+  --crit:#E6756A; --crit-soft:#391D1A;
+  --warn:#D6A04A; --warn-soft:#312513;
+  --good:#6DBC88; --good-soft:#162F1E;
+}
+*{box-sizing:border-box}
+body{background:var(--ground);color:var(--ink);font-family:var(--sans);
+  font-size:16.5px;line-height:1.6;margin:0;-webkit-text-size-adjust:100%}
+.wrap{max-width:840px;margin:0 auto;padding:26px 20px 90px}
+h1,h2,h3{text-wrap:balance;line-height:1.15;margin:0}
+h1{font-size:clamp(30px,7vw,48px);font-weight:770;letter-spacing:-.026em}
+h2{font-size:clamp(23px,4.4vw,31px);font-weight:730;letter-spacing:-.018em}
+h3{font-size:17px;font-weight:700;margin:0 0 3px}
+p{margin:0}
+.deck{display:flex;flex-direction:column;gap:0}
+.slide{border-top:2px solid var(--ink);padding:26px 0 34px;display:flex;flex-direction:column;gap:17px}
+.slide:first-of-type{border-top:none}
+.snum{font-family:var(--mono);font-size:11px;letter-spacing:.16em;font-weight:700;color:var(--accent)}
+.lede{font-size:17.5px;color:var(--ink-2);max-width:62ch}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+header.hd{padding:8px 0 30px;display:flex;flex-direction:column;gap:15px}
+.meta{font-family:var(--mono);font-size:12px;color:var(--ink-3);line-height:1.7}
+
+.band{display:grid;grid-template-columns:repeat(auto-fit,minmax(158px,1fr));gap:1.5px;
+  background:var(--rule);border:1.5px solid var(--rule);border-radius:3px;overflow:hidden}
+.cell{background:var(--panel);padding:15px 16px;display:flex;flex-direction:column;gap:3px}
+.cell .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3)}
+.cell .v{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:25px;font-weight:660;letter-spacing:-.022em}
+.cell .s{font-size:12.5px;color:var(--ink-2);line-height:1.45}
+.v.crit{color:var(--crit)} .v.good{color:var(--good)} .v.warn{color:var(--warn)}
+
+.scroll{overflow-x:auto;border:1.5px solid var(--rule);border-radius:3px;background:var(--panel)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:470px}
+th,td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--rule-2);vertical-align:top}
+thead th{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--ink-3);font-weight:600;background:var(--wash);border-bottom:1.5px solid var(--rule)}
+td.n,th.n{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+tbody tr:last-child td{border-bottom:none}
+tr.tot td{font-weight:700;background:var(--accent-soft);border-top:1.5px solid var(--rule)}
+.pos{color:var(--good)} .neg{color:var(--crit)}
+
+.note{border:1.5px solid var(--rule);border-radius:3px;padding:15px 17px;background:var(--panel);
+  display:flex;flex-direction:column;gap:8px}
+.note.c{border-color:var(--crit);background:var(--crit-soft)}
+.note.w{border-color:var(--warn);background:var(--warn-soft)}
+.note.g{border-color:var(--good);background:var(--good-soft)}
+.note .lbl{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
+  font-weight:700;color:var(--accent)}
+.note.c .lbl{color:var(--crit)} .note.w .lbl{color:var(--warn)} .note.g .lbl{color:var(--good)}
+.arith{font-family:var(--mono);font-size:12.5px;color:var(--ink-2);background:var(--wash);
+  padding:9px 12px;border-radius:3px;overflow-x:auto;white-space:nowrap;border:1px solid var(--rule-2)}
+
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:620px){.two{grid-template-columns:1fr}}
+.card{border:1.5px solid var(--rule);border-radius:3px;background:var(--panel);padding:15px 16px;
+  display:flex;flex-direction:column;gap:8px}
+.card .ttl{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
+  font-weight:700;color:var(--accent)}
+.big{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:27px;font-weight:660;letter-spacing:-.02em}
+.arrow{font-family:var(--mono);font-size:15px;color:var(--ink-3)}
+
+ul,ol{margin:0;padding-left:19px;display:flex;flex-direction:column;gap:7px}
+li::marker{color:var(--ink-3)}
+.chk{list-style:none;padding-left:0}
+.chk li{display:grid;grid-template-columns:20px 1fr;gap:8px;align-items:start}
+.chk li::before{content:"□";font-family:var(--mono);color:var(--accent);font-size:15px;line-height:1.5}
+.who{font-family:var(--mono);font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--accent-ink);background:var(--accent-soft);padding:1.5px 6px;border-radius:2px;
+  font-weight:650;white-space:nowrap;border:1px solid var(--accent);display:inline-block}
+strong{font-weight:680}
+.foot{font-size:12.5px;color:var(--ink-3);line-height:1.65}
+hr{border:none;border-top:1.5px solid var(--rule);margin:0}
+</style>
+</head>
+<body>
+
+
+<div class="wrap">
+<header class="hd">
+  <div class="snum">FOR KAYDEN &amp; JARED · 13 AUGUST 2026</div>
+  <h1>The September plan</h1>
+  <p class="lede">One change on 1 September, one motion behind it, and a dated path that puts the product company at break-even in November. Every number here comes from the bank, not a report.</p>
+  <p class="meta">Mercury API · 3 complete months, May–July 2026 · inter-entity transfers and internal account moves excluded and verified to net zero</p>
+</header>
+
+<div class="deck">
+
+<section class="slide">
+  <div class="snum">01 — THE DECISION</div>
+  <h2>Taylor's salary moves to Services on 1 September, and it gets tied to three things</h2>
+  <p class="lede">Not an accounting move. His revenue lands in Services, so his cost belongs there — and it becomes a paid mandate with gates on it.</p>
+
+  <div class="scroll"><table>
+    <thead><tr><th>Tied to</th><th>Bar</th><th>By</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Accountant portal ships</strong></td><td>Live, and one named external firm using it in production</td><td>30 Sept</td></tr>
+      <tr><td><strong>Accounting vendors on board</strong></td><td>4 firms onboarded and billing</td><td>30 Nov</td></tr>
+      <tr><td><strong>Financial OS sold</strong></td><td>Zerorez closed; one more brand named and in process</td><td>30 Nov</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="two">
+    <div class="card">
+      <span class="ttl">Product cost</span>
+      <div><span class="big">$30,768</span> <span class="arrow">→</span> <span class="big pos">$23,525</span></div>
+      <p class="foot">Burn improves from −$20,733 to <strong>−$13,490/mo</strong></p>
+    </div>
+    <div class="card">
+      <span class="ttl">Services cost</span>
+      <div><span class="big">$44,152</span> <span class="arrow">→</span> <span class="big neg">$51,395</span></div>
+      <p class="foot">Surplus falls from +$9,081 to <strong>+$1,838/mo</strong></p>
+    </div>
+  </div>
+
+  <p class="arith">$80,000/yr = $6,667/mo gross · ≈$7,243 loaded with employer taxes</p>
+  <p class="lede"><strong>Group cash flow does not change.</strong> This moves cost between entities so each one's economics are legible — and so Product has a survivable number to grow into.</p>
+</section>
+
+<section class="slide">
+  <div class="snum">02 — THE MOTION</div>
+  <h2>One motion, two revenue lines</h2>
+  <p class="lede">Taylor sells accounting firms. Each firm that lands pays us twice — once in product, once in services — which is exactly why his cost can sit on Services while the wedge is a product.</p>
+
+  <div class="two">
+    <div class="card">
+      <span class="ttl">Product line — the portal</span>
+      <p>Firms adopt the accountant workspace at <strong class="num">$10/unit/mo</strong>. A firm keeping books for 45 franchise locations is <strong class="num">$450/mo</strong> of product revenue that requires no franchisor deal and no new integration.</p>
+      <p class="foot">Kayden's read: "not perfect but good enough to sell."</p>
+    </div>
+    <div class="card">
+      <span class="ttl">Services line — the book</span>
+      <p>The same firms bring bookkeeping and CFO work, and refer brands. This is the line that has to replace the revenue Services is currently losing.</p>
+      <p class="foot">Jeff Kinney (~45 Deka locations) is first and already identified. Certus/Natalia, Luke and Lee are next.</p>
+    </div>
+  </div>
+
+  <div class="note">
+    <span class="lbl">Why this and not more outbound</span>
+    <p>Net-new booked 1–11 August was <span class="num">$5,400</span>. Cold outbound is 0 replies on 57 delivered emails. One accounting firm carries a book of franchise clients in a single conversation — the same reason a franchisor deal beats a franchisee deal, applied one layer up.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="snum">03 — WHAT IT DOES TO PRODUCT</div>
+  <h2>The move buys about four weeks. The levers buy the rest.</h2>
+
+  <div class="band">
+    <div class="cell"><span class="k">Before</span><span class="v crit">25 Sept</span><span class="s">$32,691 cash ÷ $20,733/mo</span></div>
+    <div class="cell"><span class="k">After the move</span><span class="v warn">end Oct</span><span class="s">$32,691 ÷ $13,490/mo = 2.4 months</span></div>
+    <div class="cell"><span class="k">Break-even</span><span class="v good">November</span><span class="s">With the levers below</span></div>
+    <div class="cell"><span class="k">Services bridge needed</span><span class="v good">$0</span><span class="s">Product cash bottoms at $22,460</span></div>
+  </div>
+
+  <p class="lede">The move alone does not save Product — it extends it from six weeks to ten. What makes it survive is that four of the six revenue levers are <strong>invoice corrections and existing customers</strong>, not new sales.</p>
+
+  <div class="scroll"><table>
+    <thead><tr><th>Lever</th><th class="n">$/mo</th><th class="n">Product net</th><th>Owner</th><th>When</th></tr></thead>
+    <tbody>
+      <tr><td>Starting point — July actual</td><td class="n">10,035</td><td class="n neg">−13,490</td><td></td><td></td></tr>
+      <tr><td><strong>Collect the ACH fee we already charge.</strong> ~$628K/mo of volume at 1% is $6,283; we banked $1,232.</td><td class="n pos">+5,088</td><td class="n neg">−8,402</td><td><span class="who">Kayden</span></td><td>Sept</td></tr>
+      <tr><td><strong>Bill the $249 platform base.</strong> 8 paying brands, apparently never invoiced.</td><td class="n pos">+1,992</td><td class="n neg">−6,410</td><td><span class="who">Kayden</span></td><td>Sept</td></tr>
+      <tr><td><strong>DonutNV's 66 unpaid units</strong> × $30. Inside a brand that already pays us.</td><td class="n pos">+1,980</td><td class="n neg">−4,430</td><td><span class="who">Taylor</span></td><td>Oct</td></tr>
+      <tr><td>Melty 10 units + base · B&amp;B 2 units</td><td class="n pos">+609</td><td class="n neg">−3,821</td><td><span class="who">Kayden</span></td><td>Oct</td></tr>
+      <tr><td><strong>Zerorez</strong> — 87 units × $30 + $249 + $199</td><td class="n pos">+3,058</td><td class="n neg">−763</td><td><span class="who">Taylor</span></td><td>Nov</td></tr>
+      <tr class="tot"><td><strong>Accountant portal</strong> — 4 firms × 45 units × $10</td><td class="n pos">+1,800</td><td class="n pos">+1,037</td><td><span class="who">Taylor</span></td><td>Nov</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="scroll"><table>
+    <thead><tr><th>Product cash, month by month</th><th class="n">Revenue</th><th class="n">Net</th><th class="n">Cash left</th></tr></thead>
+    <tbody>
+      <tr><td>September</td><td class="n">17,115</td><td class="n neg">−6,410</td><td class="n">26,281</td></tr>
+      <tr><td>October</td><td class="n">19,704</td><td class="n neg">−3,821</td><td class="n">22,460</td></tr>
+      <tr><td>November</td><td class="n">24,562</td><td class="n pos">+1,037</td><td class="n">23,497</td></tr>
+      <tr class="tot"><td>December</td><td class="n">24,562</td><td class="n pos">+1,037</td><td class="n">24,534</td></tr>
+    </tbody>
+  </table></div>
+  <p class="foot">Starting cash is Platform $25,572 plus Holdings $7,119 — Holdings is Product's only remaining funder and this plan spends it down rather than adding to it.</p>
+</section>
+
+<section class="slide">
+  <div class="snum">04 — WHAT IT DOES TO SERVICES</div>
+  <h2>This is the part Jared has to agree to, because it moves the risk onto him</h2>
+
+  <div class="note c">
+    <span class="lbl">Services goes from comfortable to thin</span>
+    <p>Taking Taylor's cost drops Services from <span class="num">+$9,081</span>/mo to <span class="num">+$1,838</span>/mo. That would be fine on its own. It is not fine alongside the trend underneath it.</p>
+    <p class="arith">Services revenue: May $60,104 → Jun $55,782 → Jul $53,233   (−6.0%/mo)</p>
+  </div>
+
+  <div class="scroll"><table>
+    <thead><tr><th>If the decline continues</th><th class="n">Revenue</th><th class="n">Net at $51,395 cost</th></tr></thead>
+    <tbody>
+      <tr><td>September</td><td class="n">50,039</td><td class="n neg">−1,356</td></tr>
+      <tr><td>October</td><td class="n">47,037</td><td class="n neg">−4,358</td></tr>
+      <tr><td>November</td><td class="n">44,214</td><td class="n neg">−7,181</td></tr>
+      <tr><td>December</td><td class="n">41,562</td><td class="n neg">−9,833</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="note w">
+    <span class="lbl">So the deal has a number on it</span>
+    <p>Taylor has to add <strong class="num">$7,243/mo</strong> of Services revenue to stand still, and <strong class="num">$10,443/mo</strong> to also offset the current decline. That is the bar. If he is not clearing it by 31 October, the salary goes back to Product or comes out entirely — and that is written down now, in August, so it is not argued about then.</p>
+  </div>
+
+  <div class="note">
+    <span class="lbl">And the decline itself needs an owner</span>
+    <p>Services losing 6% a month is a bigger threat to this company than Product's September date, because Product's problem has obvious answers and this one does not yet. <strong>Before 31 August we need to know whether it is churn, a billing failure, or seasonality</strong> — the past-due book is 20 accounts and $16,084/mo, which is a large enough number to be the whole explanation. <span class="who">Jared</span></p>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="snum">05 — HOW FAST</div>
+  <h2>Break-even on the product company in about ninety days</h2>
+  <div class="scroll"><table>
+    <thead><tr><th>Date</th><th>What has to be true</th><th>Owner</th></tr></thead>
+    <tbody>
+      <tr><td><strong>1 Sept</strong></td><td>Salary moved. Gates written down and agreed by all three of us.</td><td><span class="who">Taylor</span></td></tr>
+      <tr><td><strong>30 Sept</strong></td><td>ACH fee banking · $249 base billed to all 8 brands · portal live with one external firm on it · Product burn under $6,500/mo</td><td><span class="who">Kayden</span></td></tr>
+      <tr><td><strong>31 Oct</strong></td><td>DonutNV's 66 units billing · Melty and B&amp;B on · Zerorez closed · Taylor clearing $7,243/mo in Services or the salary moves back</td><td><span class="who">Taylor</span></td></tr>
+      <tr><td><strong>30 Nov</strong></td><td>4 accounting firms billing · <strong>Product cash-flow positive</strong></td><td><span class="who">all</span></td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="note g">
+    <span class="lbl">What makes this credible</span>
+    <p>Of the <span class="num">$14,527</span>/mo of revenue this plan adds, <strong class="num">$9,669</strong> comes from customers who already pay us — an uncollected fee, an unbilled subscription line, and units inside brands already on the platform. Only <span class="num">$4,858</span> requires winning anything new. That is why ninety days is realistic and why it does not depend on Swig.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="snum">06 — TOMORROW</div>
+  <h2>Friday 14 August</h2>
+  <div class="two">
+    <div class="card">
+      <span class="ttl">Taylor</span>
+      <ul class="chk">
+        <li>Pull the <strong>Platform Gusto register</strong>, line by line. $193,808/yr of product payroll is still unattributed — 53% of Product's cost.</li>
+        <li>Confirm <strong>Shideler's comp</strong>: the bank shows only $12,941 paid all year, both in July. If it has been accruing, moving him to commission saves nothing in cash and we owe him.</li>
+        <li>Fill <strong>STRIPE_SAAS_KEY</strong>. Product revenue has been unmeasurable for five weeks.</li>
+        <li>Book the <strong>Zerorez</strong> follow-up. Get the real unit count.</li>
+        <li>Write the <strong>gates</strong> above into one page and send it to Kayden and Jared.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="ttl">Kayden</span>
+      <ul class="chk">
+        <li>Answer one question: <strong>where do assessed ACH fees physically land?</strong> It is the single largest line in this plan at $5,088/mo.</li>
+        <li>Confirm whether the <strong>$249 platform base</strong> is unbilled or deliberately waived. If waived, this plan loses $1,992/mo and November moves to December.</li>
+        <li>Name the <strong>ship date for the accountant portal</strong> and what "one external firm in production" means.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="card">
+    <span class="ttl">Jared</span>
+    <ul class="chk">
+      <li><strong>Diagnose the 6%/mo revenue decline.</strong> Churn, billing failure, or seasonality — with names. This outranks everything else on this page.</li>
+      <li>Dunning ladder live on the 20 past-due accounts; target under <strong>$9,000/mo</strong> by 31 August.</li>
+      <li>Decide the 12 invoices at 90+ days: collect, negotiate, or write off.</li>
+      <li>Say plainly whether you accept Services carrying Taylor's cost against the gates in section 04.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="snum">07 — WHAT WOULD BREAK THIS</div>
+  <div class="scroll"><table>
+    <thead><tr><th>Risk</th><th>Effect</th></tr></thead>
+    <tbody>
+      <tr><td><strong>The ACH fee gap isn't real</strong> — fees are netted at the provider rather than receivable</td><td>Product loses $5,088/mo and break-even slips past December. Kayden's answer on Friday settles it.</td></tr>
+      <tr><td><strong>The $249 base is deliberately waived</strong></td><td>−$1,992/mo. November becomes December.</td></tr>
+      <tr><td><strong>Services' decline is churn, not billing</strong></td><td>The most serious one. Services stops funding anything and the salary move has to reverse.</td></tr>
+      <tr><td><strong>Zerorez is smaller than Deka</strong></td><td>87 units is an estimate. Real count needed before it stays in the model.</td></tr>
+      <tr><td><strong>The unattributed $193,808/yr of Platform payroll</strong></td><td>It is 53% of Product's cost. Everything in section 03 assumes it stays flat.</td></tr>
+    </tbody>
+  </table></div>
+  <p class="foot">Figures are cash from the bank over three complete months. Product revenue uses July actual ($10,035); the 3-month average is lower ($7,975), which would push break-even about three weeks later. Kasa Insurance flows are excluded from both entities — its inflows are irregular one-offs and including them distorts Services in both directions.</p>
+</section>
+
+</div>
+</div>
+
+</body>
+</html>
