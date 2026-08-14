@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow,noarchive">
 <meta name="color-scheme" content="light dark">
-<title>The September Plan — Accountant Channel & Product Break-Even</title>
+<title>Q3 Close — The Accountant Channel and the Path to $2M</title>
 <style>
 :root{
   --ground:#FCFBF9; --panel:#FFFFFF; --ink:#16191D; --ink-2:#48525E; --ink-3:#7A8490;
@@ -37,38 +37,62 @@
 body{background:var(--ground);color:var(--ink);font-family:var(--sans);
   font-size:16.5px;line-height:1.6;margin:0;-webkit-text-size-adjust:100%}
 .wrap{max-width:840px;margin:0 auto;padding:26px 20px 90px}
-h1,h2,h3{text-wrap:balance;line-height:1.15;margin:0}
-h1{font-size:clamp(30px,7vw,48px);font-weight:770;letter-spacing:-.026em}
-h2{font-size:clamp(22px,4.3vw,30px);font-weight:730;letter-spacing:-.018em}
+h1,h2,h3{text-wrap:balance;line-height:1.16;margin:0}
+h1{font-size:clamp(29px,6.6vw,46px);font-weight:770;letter-spacing:-.026em}
+h2{font-size:clamp(21px,4.1vw,29px);font-weight:730;letter-spacing:-.018em}
 h3{font-size:16.5px;font-weight:700;margin:0}
 p{margin:0}
 .deck{display:flex;flex-direction:column;gap:0}
-.slide{border-top:2px solid var(--ink);padding:26px 0 34px;display:flex;flex-direction:column;gap:17px}
+.slide{border-top:2px solid var(--ink);padding:26px 0 36px;display:flex;flex-direction:column;gap:18px}
 .slide:first-of-type{border-top:none}
 .snum{font-family:var(--mono);font-size:11px;letter-spacing:.16em;font-weight:700;color:var(--accent)}
-.lede{font-size:17.5px;color:var(--ink-2);max-width:62ch}
+.lede{font-size:17px;color:var(--ink-2);max-width:64ch}
 .num{font-family:var(--mono);font-variant-numeric:tabular-nums}
 header.hd{padding:8px 0 30px;display:flex;flex-direction:column;gap:15px}
 .meta{font-family:var(--mono);font-size:12px;color:var(--ink-3);line-height:1.7}
-.band{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:1.5px;
+
+.band{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1.5px;
   background:var(--rule);border:1.5px solid var(--rule);border-radius:3px;overflow:hidden}
 .cell{background:var(--panel);padding:15px 16px;display:flex;flex-direction:column;gap:3px}
 .cell .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3)}
-.cell .v{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:25px;font-weight:660;letter-spacing:-.022em}
+.cell .v{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:24px;font-weight:660;letter-spacing:-.022em}
 .cell .s{font-size:12.5px;color:var(--ink-2);line-height:1.45}
 .v.crit{color:var(--crit)} .v.good{color:var(--good)} .v.warn{color:var(--warn)}
+
 .scroll{overflow-x:auto;border:1.5px solid var(--rule);border-radius:3px;background:var(--panel)}
-table{border-collapse:collapse;width:100%;font-size:14px;min-width:470px}
+table{border-collapse:collapse;width:100%;font-size:14px}
 th,td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--rule-2);vertical-align:top}
 thead th{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;
   color:var(--ink-3);font-weight:600;background:var(--wash);border-bottom:1.5px solid var(--rule)}
 td.n,th.n{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
 tbody tr:last-child td{border-bottom:none}
 tr.tot td{font-weight:700;background:var(--accent-soft);border-top:1.5px solid var(--rule)}
-tr.sub td{background:var(--wash);font-weight:650}
 .pos{color:var(--good)} .neg{color:var(--crit)}
+
+@media (max-width:640px){
+  .scroll{overflow:visible;border:none;background:transparent;border-radius:0}
+  table{font-size:14.5px}
+  thead{display:none}
+  tbody tr{display:block;border:1.5px solid var(--rule);border-radius:3px;background:var(--panel);
+    padding:11px 13px;margin-bottom:9px}
+  /* text cells: label above, copy left-aligned and free to wrap */
+  tbody td{display:block;padding:5px 0;border:none;text-align:left}
+  tbody td::before{content:attr(data-l);display:block;font-family:var(--mono);font-size:10px;
+    letter-spacing:.07em;text-transform:uppercase;color:var(--ink-3);margin-bottom:1px}
+  /* numeric cells: label left, figure right — compact and scannable */
+  tbody td.n{display:flex;justify-content:space-between;align-items:baseline;gap:14px;
+    padding:3px 0;text-align:right}
+  tbody td.n::before{flex:0 0 auto;text-align:left;margin-bottom:0;padding-top:2px}
+  tbody td:first-child{display:block;text-align:left;font-weight:690;
+    border-bottom:1px solid var(--rule-2);padding-bottom:8px;margin-bottom:6px}
+  tbody td:first-child::before{display:none}
+  tbody tr:last-child td{border-bottom:none}
+  tr.tot{border-color:var(--accent);background:var(--accent-soft)}
+  tr.tot td{background:transparent;border-top:none}
+}
+
 .note{border:1.5px solid var(--rule);border-radius:3px;padding:15px 17px;background:var(--panel);
-  display:flex;flex-direction:column;gap:8px}
+  display:flex;flex-direction:column;gap:9px}
 .note.c{border-color:var(--crit);background:var(--crit-soft)}
 .note.w{border-color:var(--warn);background:var(--warn-soft)}
 .note.g{border-color:var(--good);background:var(--good-soft)}
@@ -76,15 +100,16 @@ tr.sub td{background:var(--wash);font-weight:650}
   font-weight:700;color:var(--accent)}
 .note.c .lbl{color:var(--crit)} .note.w .lbl{color:var(--warn)} .note.g .lbl{color:var(--good)}
 .arith{font-family:var(--mono);font-size:12.5px;color:var(--ink-2);background:var(--wash);
-  padding:9px 12px;border-radius:3px;overflow-x:auto;white-space:nowrap;border:1px solid var(--rule-2)}
+  padding:9px 12px;border-radius:3px;border:1px solid var(--rule-2);
+  overflow-x:auto;word-break:break-word}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .three{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-@media (max-width:620px){.two,.three{grid-template-columns:1fr}}
+@media (max-width:640px){.two,.three{grid-template-columns:1fr}}
 .card{border:1.5px solid var(--rule);border-radius:3px;background:var(--panel);padding:15px 16px;
   display:flex;flex-direction:column;gap:8px}
 .card .ttl{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
   font-weight:700;color:var(--accent)}
-.big{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:26px;font-weight:660;letter-spacing:-.02em}
+.big{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:25px;font-weight:660;letter-spacing:-.02em}
 .arrow{font-family:var(--mono);font-size:15px;color:var(--ink-3)}
 ul,ol{margin:0;padding-left:19px;display:flex;flex-direction:column;gap:7px}
 li::marker{color:var(--ink-3)}
@@ -103,215 +128,292 @@ strong{font-weight:680}
 
 <div class="wrap">
 <header class="hd">
-  <div class="snum">FOR KAYDEN · 13 AUGUST 2026</div>
-  <h1>The accountant channel, and how it makes product profitable</h1>
-  <p class="lede">Three accounting firms, ~400 franchise units, $20 per unit plus 1% on payments. Combined with the money already sitting uncollected on the platform, it takes the product company from −$20,733/mo to profitable inside ninety days.</p>
-  <p class="meta">All base figures from the bank — Mercury API, three complete months May–July 2026 · payment volume from PostHog · unit counts from the Adoption Snapshot, brands only</p>
+  <div class="snum">FOR KAYDEN &amp; JARED · 13 AUGUST 2026</div>
+  <h1>How the accountant channel closes Q3 and gets us to $2M</h1>
+  <p class="lede">The Q3 plan said the constraint was activation velocity, not demand. It was right. The accountant channel is the batch mechanism it called for — and priced properly, it also turns the product company profitable in October.</p>
+  <p class="meta">Base figures from the bank (Mercury API, three complete months May–July 2026) · payment volume from PostHog · unit counts from the Adoption Snapshot, brands only · targets from Facts_Source_of_Truth §3, reconciled 15 July</p>
 </header>
 
 <div class="deck">
 
 <section class="slide">
-  <div class="snum">01 — THE HEADLINE</div>
-  <h2>Product breaks even in October and runs positive from November</h2>
-  <div class="band">
-    <div class="cell"><span class="k">Product today</span><span class="v crit">−$20,733</span><span class="s">$10,035 revenue · $30,768 cost</span></div>
-    <div class="cell"><span class="k">After salary move</span><span class="v warn">−$13,490</span><span class="s">Taylor's cost to Services, 1 Sept</span></div>
-    <div class="cell"><span class="k">October</span><span class="v">−$394</span><span class="s">Break-even</span></div>
-    <div class="cell"><span class="k">December</span><span class="v good">+$10,653</span><span class="s">$34,178/mo revenue</span></div>
-  </div>
-  <p class="lede">Product revenue goes from <span class="num">$10,035</span> to <span class="num">$34,178</span>/mo by December — a <strong>$410K annual run-rate</strong> — and the product company stops needing Services or Holdings to survive.</p>
-
+  <div class="snum">01 — WHERE Q3 ACTUALLY STANDS</div>
+  <h2>Against the plan we ratified in July</h2>
   <div class="scroll"><table>
-    <thead><tr><th>Where the added revenue comes from</th><th class="n">By Dec</th><th class="n">At full attach</th></tr></thead>
+    <thead><tr><th>Canon (15 July)</th><th class="n">Target</th><th class="n">Today</th><th>Read</th></tr></thead>
     <tbody>
-      <tr><td><strong>Already earned, not collected</strong> — fees, unbilled base, units inside paying brands</td><td class="n pos">9,637</td><td class="n pos">9,637</td></tr>
-      <tr><td><strong>Accountant channel</strong> — three firms we can name today</td><td class="n pos">10,299</td><td class="n pos">13,284</td></tr>
-      <tr><td><strong>Financial OS to brands</strong> — Zerorez</td><td class="n pos">4,207</td><td class="n pos">4,207</td></tr>
-      <tr class="tot"><td>Added to product revenue</td><td class="n pos">24,143</td><td class="n pos">27,128</td></tr>
-      <tr><td>Product revenue</td><td class="n">34,178</td><td class="n">37,163</td></tr>
-      <tr class="tot"><td>Product net, against $23,525 cost</td><td class="n pos">+10,653</td><td class="n pos">+13,638</td></tr>
+      <tr><td>Collected ARR — combined</td><td class="n" data-l="Target">$2.0M EOY</td><td class="n" data-l="Today">$1.05M</td><td data-l="Read">Product $120K + Services $639K, both from the bank</td></tr>
+      <tr><td>Product collected ARR</td><td class="n" data-l="Target">$700K</td><td class="n" data-l="Today">$120K</td><td data-l="Read">July $10,035/mo × 12</td></tr>
+      <tr><td>Services collected ARR</td><td class="n" data-l="Target">$1.2–1.3M</td><td class="n" data-l="Today">$639K</td><td data-l="Read">July $53,233/mo × 12 — matches the canon baseline exactly</td></tr>
+      <tr><td><strong>Gate 1</strong> — July product collects $12K/mo</td><td class="n" data-l="Target">$12,000</td><td class="n neg" data-l="Today">$10,035</td><td data-l="Read"><strong>Missed on bank data.</strong> The canon's own rule then applies: the product target reopens.</td></tr>
+      <tr class="tot"><td>Activated units</td><td class="n" data-l="Target">300 / 400</td><td class="n" data-l="Today">218</td><td data-l="Read">Adopted, value-realizing, brands only</td></tr>
     </tbody>
   </table></div>
 
-  <div class="note g">
-    <span class="lbl">Why this is credible</span>
-    <p><strong class="num">$9,637</strong> of it is money we have already earned and are simply not collecting — no sale involved. Another <strong class="num">$13,284</strong> at full attach comes from three firms we can name today. Only <span class="num">$4,207</span> depends on winning a brand we have not closed.</p>
-    <p class="foot">December is short of full run-rate because payments attach is still ramping — Franchise Resource onboards in December and reaches 50% attach in Q1. The right-hand column is where this lands in early 2027 with no further selling.</p>
+  <div class="note w">
+    <span class="lbl">What the canon told us to do when Gate 1 missed</span>
+    <p>"If gate 1 misses, the target conversation reopens <em>before</em> the raise narrative locks." That is this document. <strong>Product's $700K is not reachable in 2026</strong> — but the plan below reaches <span class="num">$410K</span> and, more importantly, makes product <em>profitable</em>, which the $700K version never did.</p>
   </div>
 </section>
 
 <section class="slide">
-  <div class="snum">02 — THE ECONOMICS</div>
-  <h2>What an accountant unit is actually worth</h2>
-  <p class="lede">The subscription is the smaller half. Payments are the bigger half, and that is the part worth getting right.</p>
+  <div class="snum">02 — THE ONE CHANGE</div>
+  <h2>The accountant network stops being free</h2>
+  <p class="lede">The 21 July decision made accounting firms a distribution surface — "one distributes" — three to five firms onboarded free and scored on brand introductions. Charging them changes what it is.</p>
+  <div class="two">
+    <div class="card">
+      <span class="ttl">Canon: firms as distribution</span>
+      <p>3–5 firms, free, measured on brand intros. Gate G3 was "one firm-sourced brand intro by 31 Oct." Revenue contribution: <strong>$0</strong>.</p>
+    </div>
+    <div class="card">
+      <span class="ttl">Now: firms as a revenue line</span>
+      <p>3 firms, <strong>$20/unit/mo</strong> plus 1% on payments, ~400 units. Revenue contribution: <strong>$13,284/mo</strong>, and they still make the brand introductions.</p>
+    </div>
+  </div>
+  <div class="note g">
+    <span class="lbl">Why this is the Q3 plan working, not a departure from it</span>
+    <p>The canon's own words: <em>"Deka's ~6-week single-brand baseline is why batches — brand-wide connects, firm book-connects — are the mechanism."</em> <strong>Firm book-connects were already the named mechanism.</strong> The only change is that we charge for it.</p>
+    <p>And it clears the north star on its own: <strong>330 named units takes us from 218 activated to ~550</strong>, past both the 300 target and the 400 stretch, without Swig.</p>
+  </div>
+</section>
 
+<section class="slide">
+  <div class="snum">03 — THE ECONOMICS</div>
+  <h2>What a unit is worth, and where the canon was too conservative</h2>
   <div class="note">
-    <span class="lbl">Deriving the payment number from our own volume</span>
-    <p class="arith">$290,416 succeeded over 2 weeks (PostHog) → $628,751/mo ÷ 238 paying units = $2,642/unit/mo</p>
-    <p class="arith">$2,642 × 1% = <strong>$26.42 per unit per month in ACH fee revenue</strong></p>
-    <p>That is <strong>more than the $20 subscription.</strong> A franchise location running royalties and vendor payments through us is worth roughly $46/mo at full payment attach — and the fee scales with their sales without us doing anything.</p>
+    <span class="lbl">Deriving payment value from our own volume</span>
+    <p class="arith">$290,416 succeeded over 2 weeks (PostHog) → $628,751/mo ÷ 238 paying units = $2,642/unit/mo → at 1% = <strong>$26.42/unit/mo</strong></p>
+    <p>The canon priced a connected unit at <strong class="num">$46/mo</strong> — $30 connection plus roughly $16 of payments, chosen conservatively. Actual volume says payments are worth <strong class="num">$26.42</strong>, not $16.</p>
+    <p class="arith">Canon: $30 + $16 = $46/unit/mo   ·   Actual: $30 + $26.42 = $56.42/unit/mo   (+23%)</p>
   </div>
 
   <div class="scroll"><table>
-    <thead><tr><th>400 units, by how many turn payments on</th><th class="n">Subscription</th><th class="n">ACH @1%</th><th class="n">Total /mo</th><th class="n">Per year</th></tr></thead>
+    <thead><tr><th>Accountant unit, 400 units</th><th class="n">Subscription</th><th class="n">ACH @ 1%</th><th class="n">Total /mo</th><th class="n">Per year</th></tr></thead>
     <tbody>
-      <tr><td>Subscription only — no payments</td><td class="n">8,000</td><td class="n">0</td><td class="n">8,000</td><td class="n">96,000</td></tr>
-      <tr><td>25% attach</td><td class="n">8,000</td><td class="n">2,642</td><td class="n">10,642</td><td class="n">127,702</td></tr>
-      <tr class="tot"><td><strong>50% attach — the plan</strong></td><td class="n">8,000</td><td class="n">5,284</td><td class="n">13,284</td><td class="n">159,403</td></tr>
-      <tr><td>75% attach</td><td class="n">8,000</td><td class="n">7,925</td><td class="n">15,925</td><td class="n">191,105</td></tr>
-      <tr><td>100% attach</td><td class="n">8,000</td><td class="n">10,567</td><td class="n">18,567</td><td class="n">222,807</td></tr>
+      <tr><td>Subscription only — no payments</td><td class="n" data-l="Sub">8,000</td><td class="n" data-l="ACH">0</td><td class="n" data-l="Total/mo">8,000</td><td class="n" data-l="Per year">96,000</td></tr>
+      <tr><td>25% payments attach</td><td class="n" data-l="Sub">8,000</td><td class="n" data-l="ACH">2,642</td><td class="n" data-l="Total/mo">10,642</td><td class="n" data-l="Per year">127,702</td></tr>
+      <tr class="tot"><td>50% attach — the plan</td><td class="n" data-l="Sub">8,000</td><td class="n" data-l="ACH">5,284</td><td class="n" data-l="Total/mo">13,284</td><td class="n" data-l="Per year">159,403</td></tr>
+      <tr><td>75% attach</td><td class="n" data-l="Sub">8,000</td><td class="n" data-l="ACH">7,925</td><td class="n" data-l="Total/mo">15,925</td><td class="n" data-l="Per year">191,105</td></tr>
+      <tr><td>100% attach</td><td class="n" data-l="Sub">8,000</td><td class="n" data-l="ACH">10,567</td><td class="n" data-l="Total/mo">18,567</td><td class="n" data-l="Per year">222,807</td></tr>
     </tbody>
   </table></div>
 
   <div class="scroll"><table>
     <thead><tr><th>The three firms</th><th class="n">Units</th><th class="n">Sub @ $20</th><th class="n">ACH @ 50%</th><th class="n">Total /mo</th></tr></thead>
     <tbody>
-      <tr><td>Natalia — Crumbl's accountant</td><td class="n">130</td><td class="n">2,600</td><td class="n">1,717</td><td class="n">4,317</td></tr>
-      <tr><td>Certus</td><td class="n">100</td><td class="n">2,000</td><td class="n">1,321</td><td class="n">3,321</td></tr>
-      <tr><td>Franchise Resource</td><td class="n">100</td><td class="n">2,000</td><td class="n">1,321</td><td class="n">3,321</td></tr>
-      <tr class="tot"><td>Named today</td><td class="n">330</td><td class="n">6,600</td><td class="n">4,359</td><td class="n">10,959</td></tr>
-      <tr><td>Modeled (with headroom to 400)</td><td class="n">400</td><td class="n">8,000</td><td class="n">5,284</td><td class="n">13,284</td></tr>
+      <tr><td>Natalia — Crumbl's accountant</td><td class="n" data-l="Units">130</td><td class="n" data-l="Sub">2,600</td><td class="n" data-l="ACH">1,717</td><td class="n" data-l="Total/mo">4,317</td></tr>
+      <tr><td>Certus</td><td class="n" data-l="Units">100</td><td class="n" data-l="Sub">2,000</td><td class="n" data-l="ACH">1,321</td><td class="n" data-l="Total/mo">3,321</td></tr>
+      <tr><td>Franchise Resource</td><td class="n" data-l="Units">100</td><td class="n" data-l="Sub">2,000</td><td class="n" data-l="ACH">1,321</td><td class="n" data-l="Total/mo">3,321</td></tr>
+      <tr class="tot"><td>Named today</td><td class="n" data-l="Units">330</td><td class="n" data-l="Sub">6,600</td><td class="n" data-l="ACH">4,359</td><td class="n" data-l="Total/mo">10,959</td></tr>
+      <tr><td>Modeled with headroom</td><td class="n" data-l="Units">400</td><td class="n" data-l="Sub">8,000</td><td class="n" data-l="ACH">5,284</td><td class="n" data-l="Total/mo">13,284</td></tr>
     </tbody>
   </table></div>
 
   <div class="note w">
-    <span class="lbl">The assumption most likely to be wrong — and it's yours to settle, Kayden</span>
-    <p>$26.42/unit is a <strong>network average</strong>. If the $628,751/mo of volume is concentrated in two or three large brands, then a typical accountant-channel franchisee moves far less and the ACH line is overstated.</p>
-    <p><strong>The question: of the 238 paying units, how many actually process ACH, and what does the volume distribution look like?</strong> If the median unit is well below $2,642/mo, we re-cut this at the median rather than the mean. Nothing else in the model moves as much.</p>
+    <span class="lbl">The assumption most likely to be wrong — Kayden's to settle</span>
+    <p>$26.42/unit is a <strong>network average</strong>. If the $628,751/mo is concentrated in two or three large brands, a typical accountant-channel franchisee moves far less and this line is overstated by up to $5,284/mo.</p>
+    <p><strong>The question is the distribution, not the mean: of the 238 paying units, how many actually process ACH, and what does the median unit move?</strong></p>
   </div>
 </section>
 
 <section class="slide">
-  <div class="snum">03 — ON THE TABLE NOW</div>
-  <h2>What we are already owed and not collecting</h2>
-  <p class="lede">Before a single new customer. This is the half of the plan that needs engineering and billing attention, not selling.</p>
+  <div class="snum">04 — THE GTM MOTION</div>
+  <h2>One ICP, two layers, one motion — with a third door</h2>
+  <p class="lede">The canon's motion is "sign the Zor, inherit the Zees." The accountant channel is the same trade one layer up: <strong>sign the firm, inherit the book.</strong></p>
+
+  <div class="scroll"><table>
+    <thead><tr><th>Door</th><th>What one win delivers</th><th class="n">Product /yr</th><th class="n">Services /yr</th><th>Cycle</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Growth-stage ICP brand</strong> — ~40 open, 50+ sold (canon archetype)</td><td data-l="Delivers">The franchisor, then its franchisees</td><td class="n" data-l="Product/yr">$25K</td><td class="n" data-l="Services/yr">$44K</td><td data-l="Cycle">Months</td></tr>
+      <tr><td><strong>Flagship</strong> — 100+ open (Swig)</td><td data-l="Delivers">200 units + book migration</td><td class="n" data-l="Product/yr">$110K</td><td class="n" data-l="Services/yr">$470K stretch</td><td data-l="Cycle">Quarters</td></tr>
+      <tr class="tot"><td><strong>Accounting firm</strong> — the new door</td><td data-l="Delivers">A whole book at once, already onboarded</td><td class="n" data-l="Product/yr">$52K</td><td class="n" data-l="Services/yr">$77K</td><td data-l="Cycle">Weeks</td></tr>
+    </tbody>
+  </table></div>
+  <p class="foot">Firm figures are Natalia at 130 units: product $4,317/mo; services at a 20% bookkeeping take on her book (26 accounts × $487/mo). Brand archetype values are the canon's own §1 atoms.</p>
 
   <div class="three">
     <div class="card">
-      <span class="ttl">Payments leaking</span>
-      <div class="big neg">80%</div>
-      <p class="foot">We assess <span class="num">$6,288</span>/mo in ACH fees and bank <span class="num">$1,232</span>. Where the other <strong>$5,056/mo</strong> physically goes is the single biggest open question in the company.</p>
+      <span class="ttl">Lane 1 · Capture</span>
+      <p><strong>$9,637/mo.</strong> Fee collection, unbilled base fees, units inside brands that already pay us. No selling.</p>
+      <p class="foot">Mostly Kayden</p>
     </div>
     <div class="card">
-      <span class="ttl">Eligible, not paying</span>
-      <div class="big neg">161 units</div>
-      <p class="foot">399 eligible vs 238 paying. DonutNV 66 · beem 83 · Melty 10 · B&amp;B 2. <strong>beem is excluded</strong> — 0 paying since Jan 2025, it is pipeline, not a lever.</p>
+      <span class="ttl">Lane 2 · Accountant channel</span>
+      <p><strong>$13,284/mo.</strong> Natalia, Certus, Franchise Resource. The batch mechanism the canon asked for.</p>
+      <p class="foot">Taylor</p>
     </div>
     <div class="card">
-      <span class="ttl">Paying, no outcome</span>
-      <div class="big warn">20 units</div>
-      <p class="foot">Billing with no verified value delivered. Not new revenue — <strong>revenue we lose</strong> if it stays that way.</p>
+      <span class="ttl">Lane 3 · Financial OS outbound</span>
+      <p><strong>$4,207/mo.</strong> Outbound continues, aimed at growth-stage brands. Zerorez first. Swig is upside, not in the model.</p>
+      <p class="foot">Taylor</p>
     </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="snum">05 — MONEY ON THE TABLE</div>
+  <h2>What we are already owed and not collecting</h2>
+  <div class="three">
+    <div class="card"><span class="ttl">Payments leaking</span><div class="big neg">80%</div>
+      <p class="foot">We assess <span class="num">$6,288</span>/mo in ACH fees and bank <span class="num">$1,232</span>.</p></div>
+    <div class="card"><span class="ttl">Eligible, not paying</span><div class="big neg">161 units</div>
+      <p class="foot">399 eligible vs 238 paying. DonutNV 66 · beem 83 · Melty 10 · B&amp;B 2.</p></div>
+    <div class="card"><span class="ttl">Paying, no outcome</span><div class="big warn">20 units</div>
+      <p class="foot">Revenue we lose if it stays that way, not revenue we gain.</p></div>
   </div>
 
   <div class="scroll"><table>
     <thead><tr><th>Capture item</th><th class="n">$/mo</th><th>What it actually is</th><th>Owner</th></tr></thead>
     <tbody>
-      <tr><td><strong>ACH fees assessed, not banked</strong></td><td class="n pos">5,056</td><td>Not a sale. Either the fee nets out at the provider, sits as a receivable, or is absorbed. Three very different answers.</td><td><span class="who">Kayden</span></td></tr>
-      <tr><td><strong>$249 platform base, unbilled</strong></td><td class="n pos">1,992</td><td>238 units × $30 = $7,140 reconciles to $6,780 of actual revenue — so units bill correctly and <strong>the 8 brand base fees do not appear at all</strong>.</td><td><span class="who">Kayden</span></td></tr>
-      <tr><td><strong>DonutNV — 66 unpaid units</strong></td><td class="n pos">1,980</td><td>143 eligible, 77 paying, inside a brand already paying us. Commercial, not technical.</td><td><span class="who">Taylor</span></td></tr>
-      <tr><td>Melty 10 units + base · B&amp;B 2 units</td><td class="n pos">609</td><td>Melty closed in July and bills nothing at all.</td><td><span class="who">Kayden</span></td></tr>
-      <tr class="tot"><td>Total sitting on the table</td><td class="n pos">9,637</td><td colspan="2">$115,644/yr, from customers who are already ours</td></tr>
+      <tr><td><strong>ACH fees assessed, not banked</strong></td><td class="n pos" data-l="$/mo">5,056</td><td data-l="What">Not a sale. Either the fee nets at the provider, sits as a receivable, or is absorbed — three different answers.</td><td data-l="Owner"><span class="who">Kayden</span></td></tr>
+      <tr><td><strong>$249 platform base, unbilled</strong></td><td class="n pos" data-l="$/mo">1,992</td><td data-l="What">238 units × $30 = $7,140 reconciles to $6,780 of actual revenue — units bill correctly, the 8 brand base fees do not appear at all.</td><td data-l="Owner"><span class="who">Kayden</span></td></tr>
+      <tr><td><strong>DonutNV — 66 unpaid units</strong></td><td class="n pos" data-l="$/mo">1,980</td><td data-l="What">143 eligible, 77 paying, inside a brand already paying us. This is the canon's "full activation" line.</td><td data-l="Owner"><span class="who">Taylor</span></td></tr>
+      <tr><td>Melty 10 units + base · B&amp;B 2 units</td><td class="n pos" data-l="$/mo">609</td><td data-l="What">Melty closed in July and bills nothing at all.</td><td data-l="Owner"><span class="who">Kayden</span></td></tr>
+      <tr class="tot"><td>Total sitting on the table</td><td class="n pos" data-l="$/mo">9,637</td><td data-l="What">$115,644/yr, from customers who are already ours</td><td data-l="Owner"></td></tr>
     </tbody>
   </table></div>
+  <p class="foot"><strong>beem's 83 units are excluded from every line.</strong> Zero paying since January 2025 makes it pipeline, not a lever — the canon's own correction.</p>
 </section>
 
 <section class="slide">
-  <div class="snum">04 — THE MOTION</div>
-  <h2>Three lanes, one seller</h2>
-  <div class="three">
-    <div class="card">
-      <span class="ttl">Lane 1 · Capture</span>
-      <p><strong>$9,637/mo.</strong> Fee collection, base billing, and units inside brands that already pay us. Mostly Kayden's; no selling required.</p>
-    </div>
-    <div class="card">
-      <span class="ttl">Lane 2 · Accountant channel</span>
-      <p><strong>$13,284/mo.</strong> Natalia, Certus, Franchise Resource. One conversation delivers a book of units instead of one location.</p>
-    </div>
-    <div class="card">
-      <span class="ttl">Lane 3 · Financial OS outbound</span>
-      <p><strong>$4,207/mo.</strong> Outbound continues, aimed at brands. Zerorez first. Swig and the MindBody list are upside not in this model.</p>
-    </div>
+  <div class="snum">06 — PRODUCT TO PROFITABLE</div>
+  <h2>Break-even in October, positive from November</h2>
+  <div class="band">
+    <div class="cell"><span class="k">Today</span><span class="v crit">−$20,733</span><span class="s">$10,035 rev · $30,768 cost</span></div>
+    <div class="cell"><span class="k">After salary move</span><span class="v warn">−$13,490</span><span class="s">Taylor's cost to Services, 1 Sept</span></div>
+    <div class="cell"><span class="k">October</span><span class="v">−$394</span><span class="s">Break-even</span></div>
+    <div class="cell"><span class="k">December</span><span class="v good">+$10,653</span><span class="s">$34,178/mo revenue</span></div>
   </div>
-  <div class="note">
-    <span class="lbl">Why the accountant channel is the wedge and not just another lead source</span>
-    <p>A brand deal delivers units one franchisor at a time and takes months. <strong>An accounting firm already holds the book</strong> — Natalia alone is 130 units, which is more than every brand we have except DonutNV. The firm also does the work we would otherwise have to do: onboarding, data hygiene, chasing connections. We supply reports, proposals and payment rails; they supply distribution and fulfilment.</p>
-    <p>And it compounds with Lane 3 — a firm that likes the portal introduces us to the brands behind its clients.</p>
-  </div>
-</section>
 
-<section class="slide">
-  <div class="snum">05 — THE BUILD</div>
-  <h2>Month by month to profitable</h2>
   <div class="scroll"><table>
     <thead><tr><th>Month</th><th>What lands</th><th class="n">Added</th><th class="n">Revenue</th><th class="n">Net</th><th class="n">Cash</th></tr></thead>
     <tbody>
-      <tr><td><strong>Sept</strong></td><td>ACH capture begins (60%) · $249 base fees billed to 8 brands · <em>portal ships</em></td><td class="n">+5,026</td><td class="n">15,061</td><td class="n neg">−8,464</td><td class="n">24,227</td></tr>
-      <tr><td><strong>Oct</strong></td><td>ACH capture complete · DonutNV 66 + Melty + B&amp;B · <strong>Natalia live, 130 units</strong></td><td class="n">+8,070</td><td class="n">23,131</td><td class="n neg">−394</td><td class="n">23,832</td></tr>
-      <tr><td><strong>Nov</strong></td><td>Certus live, 100 units · Natalia payments to 50% · <strong>Zerorez closed</strong></td><td class="n">+7,152</td><td class="n">30,282</td><td class="n pos">+6,757</td><td class="n">30,590</td></tr>
-      <tr class="tot"><td><strong>Dec</strong></td><td>Franchise Resource live, 100 units · payments attach ramps across all three</td><td class="n">+3,896</td><td class="n">34,178</td><td class="n pos">+10,653</td><td class="n">41,243</td></tr>
+      <tr><td><strong>Sept</strong></td><td data-l="Lands">ACH capture begins · $249 base billed to 8 brands · <em>portal ships</em></td><td class="n" data-l="Added">+5,026</td><td class="n" data-l="Revenue">15,061</td><td class="n neg" data-l="Net">−8,464</td><td class="n" data-l="Cash">24,227</td></tr>
+      <tr><td><strong>Oct</strong></td><td data-l="Lands">ACH capture complete · DonutNV 66 + Melty + B&amp;B · <strong>Natalia live, 130 units</strong></td><td class="n" data-l="Added">+8,070</td><td class="n" data-l="Revenue">23,131</td><td class="n neg" data-l="Net">−394</td><td class="n" data-l="Cash">23,832</td></tr>
+      <tr><td><strong>Nov</strong></td><td data-l="Lands">Certus live, 100 units · Natalia payments to 50% · <strong>Zerorez closed</strong></td><td class="n" data-l="Added">+7,152</td><td class="n" data-l="Revenue">30,282</td><td class="n pos" data-l="Net">+6,757</td><td class="n" data-l="Cash">30,590</td></tr>
+      <tr class="tot"><td><strong>Dec</strong></td><td data-l="Lands">Franchise Resource live, 100 units · attach ramps across all three</td><td class="n" data-l="Added">+3,896</td><td class="n" data-l="Revenue">34,178</td><td class="n pos" data-l="Net">+10,653</td><td class="n" data-l="Cash">41,243</td></tr>
     </tbody>
   </table></div>
-  <p class="foot">Starting cash $32,691 (Platform $25,572 + Holdings $7,119). Product cost held at $23,525/mo after the salary move. Cash never dips below $23,832 — <strong>Product needs no bridge from Services at any point.</strong> Payments attach is ramped at 25% in a firm's first month and 50% by its third, not switched on at full.</p>
+  <p class="foot">Starting cash $32,691 (Platform $25,572 + Holdings $7,119). Product cost held at $23,525/mo after the salary move. Cash never dips below $23,832 — <strong>Product needs no bridge from Services at any point.</strong> Payments attach ramps 25% in a firm's first month, 50% by its third.</p>
+
   <div class="note g">
-    <span class="lbl">The engineering dependency, stated plainly</span>
-    <p>Everything from October onward assumes <strong>the accountant portal is live and billable by 30 September</strong>, with per-unit metering at $20 and payments enabled for those units. If that date slips, the whole curve slides with it — one month of slip costs roughly <span class="num">$8,000</span> of December revenue and pushes break-even to November.</p>
+    <span class="lbl">The engineering dependency</span>
+    <p>Everything from October assumes <strong>the accountant portal is live and billable by 30 September</strong>, with per-unit metering at $20 and payments enabled. One month of slip costs roughly <span class="num">$8,000</span> of December revenue and pushes break-even to November.</p>
   </div>
 </section>
 
 <section class="slide">
-  <div class="snum">06 — THE OTHER SIDE OF THE SALARY MOVE</div>
-  <h2>Services gets thinner, and that has to be said out loud</h2>
+  <div class="snum">07 — SERVICES Q3 &amp; Q4</div>
+  <h2>Services against its $1.2–1.3M target</h2>
+  <p class="lede">Services is at <span class="num">$639K</span> collected — exactly the canon baseline. Here is the build to December, and it works only if the current decline is arrested first.</p>
+
+  <div class="note c">
+    <span class="lbl">The trend underneath everything</span>
+    <p class="arith">May $60,104 → Jun $55,782 → Jul $53,233   (−6.0%/mo)</p>
+    <p>Left alone, that is <span class="num">−$9,833</span>/mo by December and none of the build below happens. <strong>Diagnosing it — churn, billing failure, or seasonality — outranks every other item in this deck.</strong> Past-due is 20 accounts and $16,084/mo, large enough to be the whole explanation. <span class="who">Jared</span></p>
+  </div>
+
+  <div class="scroll"><table>
+    <thead><tr><th>Services build to December</th><th class="n">Base /mo</th><th class="n">Stretch /mo</th></tr></thead>
+    <tbody>
+      <tr><td>July actual, collected</td><td class="n" data-l="Base">53,233</td><td class="n" data-l="Stretch">53,233</td></tr>
+      <tr><td>Arrest the decline + recover 60% of past-due</td><td class="n pos" data-l="Base">+9,650</td><td class="n pos" data-l="Stretch">+9,650</td></tr>
+      <tr><td>Terry's 74 accounts × $487/mo <span class="foot">(25% / 50% onboarded)</span></td><td class="n pos" data-l="Base">+9,010</td><td class="n pos" data-l="Stretch">+18,019</td></tr>
+      <tr><td>New opens on services brands <span class="foot">(canon: 40–50 opens × 50% take)</span></td><td class="n pos" data-l="Base">+9,740</td><td class="n pos" data-l="Stretch">+17,045</td></tr>
+      <tr><td><strong>Accountant-channel services attach</strong> <span class="foot">(330 units at 10% / 20% bookkeeping take)</span></td><td class="n pos" data-l="Base">+16,071</td><td class="n pos" data-l="Stretch">+32,142</td></tr>
+      <tr class="tot"><td>Exiting December, per month</td><td class="n" data-l="Base">97,704</td><td class="n" data-l="Stretch">130,089</td></tr>
+      <tr class="tot"><td>Annualized run-rate</td><td class="n" data-l="Base">$1.17M</td><td class="n" data-l="Stretch">$1.56M</td></tr>
+    </tbody>
+  </table></div>
+  <p class="foot">Uses the canon's own $5,850/yr blended bookkeeping account ($487/mo). Base hits <strong>94%</strong> of the $1.25M Services target; stretch clears it at <strong>125%</strong>.</p>
+
+  <div class="note">
+    <span class="lbl">The compounding that makes this work</span>
+    <p>The accountant channel is the largest single line on <em>both</em> sides — <span class="num">$13,284</span>/mo of product and <span class="num">$16,071</span>/mo of services from the same 330 units. That is the canon's "two layers, one motion," delivered by one seller through one door.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="snum">08 — THE 2026 NUMBER</div>
+  <h2>How close we get to $2M</h2>
+  <div class="scroll"><table>
+    <thead><tr><th>Exiting December, annualized</th><th class="n">Base</th><th class="n">Stretch</th><th class="n">Canon target</th></tr></thead>
+    <tbody>
+      <tr><td>Product</td><td class="n" data-l="Base">$410K</td><td class="n" data-l="Stretch">$446K</td><td class="n" data-l="Target">$700K</td></tr>
+      <tr><td>Services</td><td class="n" data-l="Base">$1.17M</td><td class="n" data-l="Stretch">$1.56M</td><td class="n" data-l="Target">$1.25M</td></tr>
+      <tr class="tot"><td>Combined collected ARR</td><td class="n" data-l="Base">$1.58M</td><td class="n" data-l="Stretch">$2.01M</td><td class="n" data-l="Target">$2.0M</td></tr>
+      <tr><td>Percentage of target</td><td class="n" data-l="Base">79%</td><td class="n pos" data-l="Stretch">100%</td><td class="n" data-l="Target">—</td></tr>
+      <tr><td>Activated units</td><td class="n" data-l="Base">~550</td><td class="n" data-l="Stretch">~620</td><td class="n" data-l="Target">300 / 400</td></tr>
+    </tbody>
+  </table></div>
+
   <div class="two">
     <div class="card">
-      <span class="ttl">Product cost</span>
-      <div><span class="big">$30,768</span> <span class="arrow">→</span> <span class="big pos">$23,525</span></div>
+      <span class="ttl">The honest read on base</span>
+      <p><strong>79% of $2.0M</strong>, from $733K in July — that is $849K of net-new against the $1.27M the canon said we needed. It misses the number and it is still the best result available from here.</p>
     </div>
     <div class="card">
-      <span class="ttl">Services surplus</span>
-      <div><span class="big">$9,081</span> <span class="arrow">→</span> <span class="big neg">$1,838</span></div>
+      <span class="ttl">What turns base into stretch</span>
+      <p>Terry at 50% instead of 25%, new opens at the top of the canon range, and a 20% bookkeeping take on the accountant books. <strong>All three are services execution, not new logos.</strong></p>
     </div>
   </div>
-  <div class="note c">
-    <span class="lbl">And Services revenue is falling</span>
-    <p class="arith">May $60,104 → Jun $55,782 → Jul $53,233   (−6.0%/mo)</p>
-    <p>At that rate Services is negative in September and −$9,833/mo by December. <strong>Taylor has to add $7,243/mo of Services revenue to stand still and $10,443/mo to also offset the decline</strong> — which is exactly what the accountant firms are meant to deliver on the services side, in bookkeeping and CFO work behind the same 330 units.</p>
-    <p>Diagnosing that 6% decline — churn, billing failure, or seasonality — outranks everything else on this page. Past-due is 20 accounts and $16,084/mo, large enough to be the entire explanation. <span class="who">Jared</span></p>
+
+  <div class="note w">
+    <span class="lbl">The mix problem the raise will ask about</span>
+    <p>Even in the stretch case product is <strong>22%</strong> of revenue, against a canon that wanted ~35%. Product reaches $410–446K, not $700K. <strong>We should say this plainly rather than let it surface in diligence:</strong> product got profitable instead of getting big, and profitable-at-$410K is a better story to walk into a raise with than burning at $700K.</p>
   </div>
 </section>
 
 <section class="slide">
-  <div class="snum">07 — KAYDEN'S LIST</div>
-  <h2>What I need from you before Friday</h2>
-  <ul class="chk">
-    <li><strong>Where do assessed ACH fees physically land?</strong> $5,056/mo, the largest single line in the plan. Netted at the provider, receivable, or absorbed — three different answers, three different plans.</li>
-    <li><strong>What is the payment-volume distribution across the 238 paying units?</strong> Mean is $2,642/unit/mo. If the median is far lower, we re-cut the ACH line at the median and the accountant channel is worth meaningfully less.</li>
-    <li><strong>Is the $249 platform base unbilled or deliberately waived?</strong> If waived, the plan loses $1,992/mo.</li>
-    <li><strong>A ship date for the accountant portal</strong>, with per-unit metering at $20 and payments enabled. Everything from October depends on 30 September.</li>
-    <li><strong>Can we meter at $20/unit today</strong>, or is billing work required first? If required, that is the critical path, not the reports.</li>
-    <li><strong>The 20 paying-without-outcome units</strong> — who are they, and what closes them out?</li>
-  </ul>
-  <div class="note">
-    <span class="lbl">And one from Taylor's side</span>
-    <p>Platform payroll is <span class="num">$367,608</span>/yr. Taylor and Kayden at $80,000 each account for roughly $173,800 loaded. <strong>$193,808/yr is unattributed</strong> — 53% of Product's cost. Every number in section 05 assumes it stays flat, so it needs a name before this plan is agreed.</p>
+  <div class="snum">09 — WHAT I NEED</div>
+  <h2>Before Friday</h2>
+  <div class="two">
+    <div class="card">
+      <span class="ttl">Kayden</span>
+      <ul class="chk">
+        <li><strong>Where do assessed ACH fees physically land?</strong> $5,056/mo, the largest single line in the plan.</li>
+        <li><strong>The payment-volume distribution across the 238 paying units</strong> — median, not mean. Up to $5,284/mo turns on this.</li>
+        <li><strong>Is the $249 base unbilled or deliberately waived?</strong></li>
+        <li><strong>Ship date for the accountant portal</strong>, with $20/unit metering and payments enabled. Everything from October depends on 30 September.</li>
+        <li><strong>Can we meter at $20/unit today</strong>, or is billing the critical path rather than the reports?</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="ttl">Jared</span>
+      <ul class="chk">
+        <li><strong>Diagnose the 6%/mo decline</strong> with names. Outranks everything else here.</li>
+        <li>Past-due under <strong>$9,000/mo</strong> by 31 August.</li>
+        <li>Decide the 12 invoices at 90+ days: collect, negotiate, or write off.</li>
+        <li><strong>What bookkeeping take can we hold on an accountant's book?</strong> I modeled 10% base / 20% stretch — you own that number.</li>
+        <li>Do you accept Services carrying Taylor's cost against the gates?</li>
+      </ul>
+    </div>
+  </div>
+  <div class="card">
+    <span class="ttl">Taylor</span>
+    <ul class="chk">
+      <li>Pull the Platform Gusto register — <strong>$193,808/yr of product payroll is unattributed</strong>, 53% of Product's cost, and section 06 assumes it stays flat.</li>
+      <li>Confirm Shideler's comp: the bank shows $12,941 paid all year, both in July. If it has been accruing, the commission move saves no cash and we owe him.</li>
+      <li>Fill <span class="num">STRIPE_SAAS_KEY</span> — product revenue has been unmeasurable for five weeks.</li>
+      <li>Natalia first. She is 130 of the 330 units and the case study for the other two.</li>
+    </ul>
   </div>
 </section>
 
 <section class="slide">
-  <div class="snum">08 — WHAT WOULD BREAK THIS</div>
+  <div class="snum">10 — WHAT WOULD BREAK THIS</div>
   <div class="scroll"><table>
-    <thead><tr><th>Risk</th><th class="n">Cost if true</th><th>Effect</th></tr></thead>
+    <thead><tr><th>Risk</th><th class="n">Cost</th><th>Effect</th></tr></thead>
     <tbody>
-      <tr><td>ACH volume is concentrated — median unit moves far less than $2,642/mo</td><td class="n neg">−$5,284/mo</td><td>Biggest single risk. Accountant channel drops to $8,000/mo and break-even slips to December.</td></tr>
-      <tr><td>The fee gap isn't recoverable — fees net at the provider</td><td class="n neg">−$5,056/mo</td><td>Break-even slips past December.</td></tr>
-      <tr><td>Portal slips past 30 September</td><td class="n neg">−$8,000/mo</td><td>Whole curve slides one month per month of slip.</td></tr>
-      <tr><td>$249 base is deliberately waived</td><td class="n neg">−$1,992/mo</td><td>October break-even becomes November.</td></tr>
-      <tr><td>Firms convert slower than one per month</td><td class="n neg">varies</td><td>Natalia is the one that matters — she is 130 of the 330 units and the case study for the other two.</td></tr>
-      <tr><td>Services decline is churn, not billing</td><td class="n neg">—</td><td>Most serious of all. Services stops funding anything and the salary move reverses.</td></tr>
+      <tr><td>ACH volume is concentrated — median unit moves far less than $2,642/mo</td><td class="n neg" data-l="Cost">−$5,284/mo</td><td data-l="Effect">Largest single risk. Accountant channel falls to $8,000/mo; break-even slips to December.</td></tr>
+      <tr><td>The fee gap isn't recoverable — fees net at the provider</td><td class="n neg" data-l="Cost">−$5,056/mo</td><td data-l="Effect">Break-even slips past December.</td></tr>
+      <tr><td>Portal slips past 30 September</td><td class="n neg" data-l="Cost">−$8,000/mo</td><td data-l="Effect">Whole curve slides one month per month of slip.</td></tr>
+      <tr><td>Services decline is churn, not billing</td><td class="n neg" data-l="Cost">up to −$9,833/mo</td><td data-l="Effect">Most serious. Services stops funding anything and the salary move reverses.</td></tr>
+      <tr><td>Terry stays at zero onboarded</td><td class="n neg" data-l="Cost">−$9,010/mo</td><td data-l="Effect">She has been verbal for a quarter. Services base drops to ~$1.06M.</td></tr>
+      <tr><td>$249 base is deliberately waived</td><td class="n neg" data-l="Cost">−$1,992/mo</td><td data-l="Effect">October break-even becomes November.</td></tr>
     </tbody>
   </table></div>
-  <p class="foot">Base figures are cash from the bank, three complete months (May–July 2026), inter-entity transfers and internal account moves excluded and verified to net zero. Product revenue baseline uses July actual ($10,035); the three-month average is $7,975, which would push break-even about three weeks later. Payment volume from PostHog succeeded-payment events. Kasa Insurance flows are excluded from both entities — its inflows are irregular one-offs. beem's 83 units are excluded from every revenue line: zero paying since January 2025 makes it pipeline, not a lever.</p>
+  <p class="foot">Base figures are cash from the bank, three complete months (May–July 2026), inter-entity transfers and internal account moves excluded and verified to net zero. Product revenue baseline uses July actual ($10,035); the three-month average is $7,975, which would push break-even about three weeks later. Payment volume from PostHog succeeded-payment events. Kasa Insurance flows are excluded from both entities — its inflows are irregular one-offs. Targets and atoms from Facts_Source_of_Truth §3 and Q3_Bottom_Up_Plan §1, reconciled 15 July 2026.</p>
 </section>
 
 </div>
